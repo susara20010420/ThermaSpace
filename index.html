@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ThermaSpace GitHub Pages Edition - public CLTD/SCL/CLF cooling-load estimation for Sri Lanka." />
+  <title>ThermaSpace | GitHub Pages Edition</title>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+<style>
+:root{
+  --bg:#f7fafc;--surface:#ffffff;--surface-2:#f1f7f6;--text:#17313a;--muted:#6b7f87;
+  --line:#dce8e6;--primary:#138a7b;--primary-dark:#0f6c61;--primary-soft:#e4f5f1;
+  --blue:#3b82f6;--orange:#f59e0b;--red:#ef4444;--green:#22a06b;--shadow:0 12px 36px rgba(22,52,61,.08);
+  --radius:18px;--radius-sm:12px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#f4fbf9 0,#f8fafc 240px,#f7fafc 100%);color:var(--text);font-size:15px}
+button,input,select{font:inherit}button{cursor:pointer}a{color:inherit}.topbar{position:sticky;top:0;z-index:30;height:76px;padding:0 28px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(220,232,230,.9)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}.brand-mark{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(135deg,#18a58e,#7cc9b8);color:#fff;font-weight:900;font-size:22px;box-shadow:0 7px 18px rgba(19,138,123,.24)}.brand strong{display:block;font-size:19px;letter-spacing:-.3px}.brand small{display:block;color:var(--muted);margin-top:1px}.top-actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.status-pill{display:inline-flex;gap:7px;align-items:center;border-radius:999px;padding:8px 11px;font-size:12px;font-weight:700;border:1px solid var(--line);background:#fff;color:var(--muted)}.status-pill i{width:7px;height:7px;border-radius:50%;background:#94a3b8}.status-pill.warn i{background:var(--orange)}.status-pill.good{color:#176b52;border-color:#bfe6d8;background:#f0fbf7}.status-pill.good i{background:var(--green)}
+.btn{border:1px solid transparent;border-radius:11px;padding:10px 15px;font-weight:800;color:var(--text);background:#fff;transition:.18s ease;box-shadow:none}.btn:hover{transform:translateY(-1px)}.btn.primary{background:var(--primary);color:#fff;box-shadow:0 8px 18px rgba(19,138,123,.2)}.btn.primary:hover{background:var(--primary-dark)}.btn.soft{background:var(--primary-soft);border-color:#cce9e3;color:var(--primary-dark)}.btn.ghost{border-color:var(--line);background:#fff}.btn.small{padding:8px 11px;font-size:13px}.btn.full{width:100%;margin-top:11px}
+.app-layout{display:grid;grid-template-columns:292px minmax(0,1fr);min-height:calc(100vh - 76px)}.sidebar{padding:28px 20px 36px 26px;border-right:1px solid var(--line);background:rgba(248,252,251,.78)}.sidebar-intro{padding:4px 9px 18px}.sidebar-intro h1{margin:5px 0 8px;font-size:25px;line-height:1.08;letter-spacing:-.8px}.sidebar-intro p:last-child{color:var(--muted);line-height:1.5;font-size:13px}.eyebrow{text-transform:uppercase;letter-spacing:.12em;color:var(--primary);font-size:11px;font-weight:900;margin:0 0 5px}
+.step-nav{display:flex;flex-direction:column;gap:7px}.step-link{text-align:left;border:1px solid transparent;background:transparent;border-radius:14px;padding:11px 12px;display:grid;grid-template-columns:35px 1fr;grid-template-rows:auto auto;column-gap:9px;color:var(--muted)}.step-link>span{grid-row:1/3;width:31px;height:31px;border-radius:9px;display:grid;place-items:center;background:#eaf1f0;color:#678078;font-size:11px;font-weight:900}.step-link b{color:var(--text);font-size:14px}.step-link small{font-size:11px;margin-top:2px}.step-link.active{background:#fff;border-color:#d7e8e4;box-shadow:0 8px 22px rgba(32,79,69,.07)}.step-link.active>span{background:var(--primary);color:#fff}.step-link.active b{color:var(--primary-dark)}.sidebar-card{margin:20px 7px 0;padding:14px;border:1px solid var(--line);background:#fff;border-radius:14px;display:flex;gap:10px;box-shadow:0 7px 20px rgba(25,66,58,.04)}.sidebar-card p{margin:4px 0 0;color:var(--muted);font-size:12px;line-height:1.45}.mini-icon{width:30px;height:30px;display:grid;place-items:center;border-radius:9px;background:var(--primary-soft);color:var(--primary)}
+.main-content{padding:28px clamp(20px,4vw,55px) 70px;max-width:1500px;width:100%;margin:0 auto}.setup-banner{display:flex;justify-content:space-between;align-items:center;gap:25px;border:1px solid #cde7e2;background:linear-gradient(135deg,#f2fbf8,#eef8ff);border-radius:18px;padding:18px 20px;margin-bottom:25px}.setup-banner h2{margin:2px 0 5px;font-size:20px}.setup-banner p:last-child{color:var(--muted);margin:0;line-height:1.5}.setup-banner code{background:#fff;padding:2px 6px;border-radius:5px;border:1px solid var(--line)}
+.step-panel{display:none}.step-panel.active{display:block}.section-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin:6px 0 21px}.section-heading h2{font-size:30px;margin:2px 0 7px;letter-spacing:-1px}.section-heading p:last-child{margin:0;color:var(--muted);max-width:760px;line-height:1.5}.method-chip{display:inline-flex;white-space:nowrap;padding:9px 12px;border-radius:999px;background:var(--primary-soft);color:var(--primary-dark);font-weight:800;font-size:12px}.method-chip.subdued{background:#edf2f2;color:#637a79}.method-chip.success{background:#e8f8f0;color:#177253}
+.grid{display:grid;gap:18px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);margin-bottom:18px}.accent-card{background:linear-gradient(180deg,#fff,#fbfffe)}.card-title{display:flex;gap:11px;align-items:flex-start;margin-bottom:17px}.card-title h3,.card h3{margin:0;font-size:17px;letter-spacing:-.25px}.card-title p,.card>p{margin:4px 0 0;color:var(--muted);font-size:13px;line-height:1.45}.icon-badge{flex:0 0 auto;width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:var(--primary-soft);color:var(--primary);font-weight:900}.row-between{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:15px}.row-between .card-title{margin-bottom:0}
+.form-grid{display:grid;gap:14px}.form-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.form-grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}.form-grid.five{grid-template-columns:repeat(5,minmax(0,1fr))}.form-grid.six{grid-template-columns:repeat(6,minmax(0,1fr))}label{display:flex;flex-direction:column;gap:7px;font-weight:750;font-size:12px;color:#4d666d}input,select{width:100%;min-width:0;padding:10px 11px;border-radius:10px;border:1px solid #d8e5e3;background:#fbfdfd;color:var(--text);outline:none;transition:.15s}input:focus,select:focus{border-color:#7bcbbb;box-shadow:0 0 0 3px rgba(19,138,123,.09);background:#fff}.check-label{flex-direction:row;align-items:center;gap:9px;margin-top:21px}.check-label input{width:17px;height:17px}.formula-note,.notice{margin-top:15px;padding:11px 13px;border-radius:10px;background:#f5f9f8;border:1px solid var(--line);color:var(--muted);font-size:12px;line-height:1.5}.formula-note span{font-weight:900;color:var(--text);margin-right:8px}.formula-note code{color:var(--primary-dark)}
+.live-strip,.item-meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}.live-strip span,.item-meta span{padding:8px 10px;border-radius:9px;background:#f3f8f7;border:1px solid #e1ecea;color:var(--muted);font-size:12px}.live-strip b,.item-meta b{color:var(--text);margin-left:4px}.dynamic-list{display:flex;flex-direction:column;gap:12px}.dynamic-item{border:1px solid #e0ebe9;border-radius:14px;padding:14px;background:#fcfefe}.item-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.remove-item{border:0;background:transparent;color:#b75656;font-size:12px;font-weight:800}.footer-nav{display:flex;justify-content:space-between;align-items:center;margin-top:24px;border-top:1px solid var(--line);padding-top:18px}
+.kpi-grid{display:grid;gap:13px;margin-bottom:18px}.kpi-grid.four{grid-template-columns:repeat(4,1fr)}.kpi{background:#fff;border:1px solid var(--line);border-radius:16px;padding:17px;box-shadow:var(--shadow)}.kpi span{display:block;color:var(--muted);font-size:12px;font-weight:700}.kpi strong{font-size:29px;letter-spacing:-.8px;margin-top:5px;display:inline-block}.kpi small{color:var(--muted);margin-left:5px}.chart-card canvas{display:block;width:100%;height:auto;max-height:390px}.legend{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:12px}.legend span{width:18px;height:3px;border-radius:3px;display:inline-block;margin-left:7px}.legend .total{background:var(--primary)}.legend .sensible{background:var(--blue)}.legend .solar{background:var(--orange)}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{border-collapse:collapse;width:100%;min-width:850px;background:#fff}th,td{padding:10px 11px;border-bottom:1px solid #e7efee;text-align:right;font-size:12px}th{position:sticky;top:0;background:#f1f7f6;color:#496269;font-weight:900}th:first-child,td:first-child{text-align:left}tr.peak-row td{background:#edf9f5;font-weight:800}
+.hero-result{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:20px;border-radius:20px;background:linear-gradient(135deg,#126f64,#179986 62%,#47ae9f);color:#fff;margin-bottom:18px;box-shadow:0 14px 36px rgba(17,111,100,.2)}.hero-result span{display:block;opacity:.8;font-size:12px}.hero-result strong{display:block;font-size:31px;letter-spacing:-1px;margin:5px 0 2px}.hero-result small{opacity:.8}.save-card{background:linear-gradient(180deg,#fff,#f7fcfb)}.save-status{margin-top:12px;padding:11px;border-radius:10px;background:#f4f8f8;border:1px solid var(--line);font-size:12px;color:var(--muted);word-break:break-word}.save-status.success{background:#eefaf5;color:#176b52;border-color:#c5e7d9}.breakdown{display:flex;flex-direction:column;gap:12px}.breakdown-row{display:grid;grid-template-columns:155px 1fr 75px;gap:10px;align-items:center;font-size:12px}.bar-track{height:9px;background:#edf2f2;border-radius:99px;overflow:hidden}.bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#1b9d89,#75c8b9)}.saved-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}.saved-file{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;border:1px solid var(--line);border-radius:11px;background:#fbfdfd;text-decoration:none}.saved-file span{display:block;font-weight:800;font-size:12px}.saved-file small{color:var(--muted);font-size:10px}.muted{color:var(--muted)}
+.toast{position:fixed;right:22px;bottom:22px;z-index:100;max-width:380px;padding:12px 15px;border-radius:12px;background:#183d3a;color:#fff;box-shadow:0 15px 40px rgba(0,0,0,.2);font-size:13px;font-weight:700;transform:translateY(30px);opacity:0;pointer-events:none;transition:.2s}.toast.show{transform:none;opacity:1}.modal{width:min(670px,calc(100vw - 30px));border:0;border-radius:18px;padding:0;box-shadow:0 24px 80px rgba(20,50,50,.23)}.modal::backdrop{background:rgba(18,43,45,.35);backdrop-filter:blur(3px)}.modal form{padding:20px}.modal-head{display:flex;justify-content:space-between;align-items:flex-start}.modal-head h3{margin:2px 0 16px;font-size:22px}.icon-btn{border:0;background:#eff5f4;width:33px;height:33px;border-radius:9px;font-size:20px}.config-details{display:flex;flex-direction:column;gap:9px}.config-row{padding:10px 12px;border:1px solid var(--line);border-radius:10px}.config-row b{display:block;font-size:11px;text-transform:uppercase;color:var(--muted);letter-spacing:.07em}.config-row code{display:block;margin-top:5px;word-break:break-all;color:var(--text)}.modal-actions{display:flex;justify-content:flex-end;margin-top:15px}
+@media(max-width:1100px){.app-layout{grid-template-columns:1fr}.sidebar{display:none}.form-grid.six{grid-template-columns:repeat(3,1fr)}.form-grid.five{grid-template-columns:repeat(3,1fr)}.topbar{padding:0 17px}.status-pill{display:none}.main-content{padding:24px 18px 60px}}
+@media(max-width:760px){.grid.two,.kpi-grid.four,.hero-result{grid-template-columns:1fr}.form-grid.two,.form-grid.four,.form-grid.five,.form-grid.six{grid-template-columns:1fr 1fr}.setup-banner,.section-heading{flex-direction:column}.top-actions .btn{padding:9px 11px;font-size:12px}.breakdown-row{grid-template-columns:110px 1fr 60px}.hero-result strong{font-size:26px}}
+@media(max-width:520px){.brand small{display:none}.form-grid.two,.form-grid.four,.form-grid.five,.form-grid.six{grid-template-columns:1fr}.main-content{padding:18px 12px 45px}.card{padding:15px}.topbar{height:auto;min-height:68px;padding:10px 12px}.section-heading h2{font-size:25px}.footer-nav{gap:8px}.footer-nav .btn{font-size:12px;padding:9px 10px}}
+@media print{.topbar,.sidebar,.setup-banner,.footer-nav,.save-card,.step-nav,#refreshSavedResults,.saved-results{display:none!important}.app-layout{display:block}.main-content{padding:0}.step-panel{display:none!important}.step-panel[data-step="6"]{display:block!important}.card,.hero-result{box-shadow:none;break-inside:avoid}.hero-result{background:#fff;color:#000;border:1px solid #ccc}.method-chip{display:none}}
+
+/* GitHub Pages edition */
+.repo-note{font-size:12px;color:var(--muted)}
+
+</style>
+</head>
+<body data-thermaspace-build="github-single-file-v1">
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="ThermaSpace home">
+      <span class="brand-mark">T</span>
+      <span>
+        <strong>ThermaSpace</strong>
+        <small>GitHub Pages CLTD Edition</small>
+      </span>
+    </a>
+    <div class="top-actions">
+      <span id="googleStatus" class="status-pill good"><i></i>Public GitHub Pages</span>
+      <span id="dbStatus" class="status-pill neutral"><i></i>Database loading…</span>
+      <button id="connectGoogle" class="btn soft">Reload lookup tables</button>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="sidebar-intro">
+        <p class="eyebrow">Cooling load workspace</p>
+        <h1>Design, calculate, save.</h1>
+        <p>Lookup tables are stored with the website in this GitHub repository. Calculations run entirely in the browser and results can be downloaded as Excel workbooks.</p>
+      </div>
+
+      <nav class="step-nav" aria-label="Calculation steps">
+        <button class="step-link active" data-step="1"><span>01</span><b>Project</b><small>Design conditions</small></button>
+        <button class="step-link" data-step="2"><span>02</span><b>Envelope</b><small>Roof, walls, glazing</small></button>
+        <button class="step-link" data-step="3"><span>03</span><b>Internal loads</b><small>Lights, people, equipment</small></button>
+        <button class="step-link" data-step="4"><span>04</span><b>Air & misc.</b><small>Outdoor air and fan heat</small></button>
+        <button class="step-link" data-step="5"><span>05</span><b>24-hour analysis</b><small>Peak load profile</small></button>
+        <button class="step-link" data-step="6"><span>06</span><b>Results</b><small>Report & export</small></button>
+      </nav>
+
+      <div class="sidebar-card">
+        <div class="mini-icon">☁</div>
+        <div>
+          <strong>Repository lookup data</strong>
+          <p>The CLTD/SCL/CLF lookup tables are versioned in this repository as CSV/JSON/JavaScript data files.</p>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <section id="setupBanner" class="setup-banner">
+        <div>
+          <p class="eyebrow">Public GitHub Pages deployment</p>
+          <h2>No backend, OAuth, Apps Script, or Colab runtime required</h2>
+          <p>ThermaSpace loads its bundled lookup database directly from this repository. Anyone can open the GitHub Pages URL and run the complete calculation without your Colab notebook being online.</p>
+        </div>
+        <button id="showConfig" class="btn soft">Show data status</button>
+      </section>
+
+      <section class="step-panel active" data-step="1">
+        <div class="section-heading">
+          <div><p class="eyebrow">Step 01</p><h2>Project & design conditions</h2><p>Set the project identity and the design-day conditions used to adjust the stored Colombo baseline CLTD values.</p></div>
+          <span class="method-chip">CLTD / SCL / CLF</span>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <div class="card-title"><span class="icon-badge">⌂</span><div><h3>Project details</h3><p>These values are written into the saved result workbook.</p></div></div>
+            <div class="form-grid two">
+              <label>Project name<input id="projectName" type="text" value="ThermaSpace Project" /></label>
+              <label>Result sheet name<input id="resultFileName" type="text" value="ThermaSpace Cooling Load Result" /></label>
+              <label>Client / reference<input id="projectRef" type="text" placeholder="Optional" /></label>
+              <label>Zone / room<input id="zoneName" type="text" value="Main Zone" /></label>
+              <label>Location<input id="location" type="text" value="Colombo, Sri Lanka" /></label>
+              <label>Building schedule
+                <select id="buildingType"><option value="office">General office</option><option value="hotel">Hotel guest room</option><option value="restaurant">Restaurant</option><option value="custom">Custom / 24-hour</option></select>
+              </label>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-title"><span class="icon-badge">☀</span><div><h3>Design day</h3><p>Baseline in the supplied Sri Lanka notes: 33°C outdoor DB, 8°C daily range, 24°C indoor DB.</p></div></div>
+            <div class="form-grid two">
+              <label>Outdoor DB maximum (°C)<input id="outdoorDb" type="number" step="0.1" value="33" /></label>
+              <label>Daily temperature range (°C)<input id="dailyRange" type="number" step="0.1" value="8" /></label>
+              <label>Indoor DB (°C)<input id="indoorDb" type="number" step="0.1" value="24" /></label>
+              <label>Indoor RH (%)<input id="indoorRh" type="number" step="1" value="50" /></label>
+              <label>Supply air temperature (°C)<input id="supplyAirC" type="number" step="0.1" value="14" /></label>
+              <label>Estimated system COP<input id="cop" type="number" min="0.1" step="0.1" value="3.2" /></label>
+              <label>Selected design hour<select id="designHour"></select></label>
+              <label class="check-label"><input id="applyCltdCorrection" type="checkbox" checked /><span>Adjust stored baseline CLTD for these design temperatures</span></label>
+            </div>
+            <div class="formula-note"><span>Temperature correction</span><code>CLTD = stored CLTD + (new correction − stored baseline correction)</code></div>
+          </article>
+        </div>
+
+        <div class="footer-nav"><span></span><button class="btn primary next" data-next="2">Continue to envelope <span>→</span></button></div>
+      </section>
+
+      <section class="step-panel" data-step="2">
+        <div class="section-heading">
+          <div><p class="eyebrow">Step 02</p><h2>Building envelope</h2><p>Roof and wall types are loaded from lookup tables stored in this GitHub repository. Selecting a wall type uses its stored CLTD profile and optional U-value preset.</p></div>
+          <span id="lookupBadge" class="method-chip subdued">Waiting for database</span>
+        </div>
+
+        <article class="card accent-card">
+          <div class="card-title"><span class="icon-badge">⌂</span><div><h3>Roof</h3><p>Hourly roof CLTD is fetched by roof type and hour.</p></div></div>
+          <div class="form-grid four">
+            <label>Roof type<select id="roofType"><option>Loading lookup tables…</option></select></label>
+            <label>U-value (W/m²·K)<input id="roofU" type="number" min="0" step="0.01" value="2.0" /></label>
+            <label>Length (m)<input id="roofLength" type="number" min="0" step="0.01" value="6" /></label>
+            <label>Width (m)<input id="roofWidth" type="number" min="0" step="0.01" value="5" /></label>
+          </div>
+          <div class="live-strip"><span>Area <b id="roofAreaOut">30.00 m²</b></span><span>Lookup CLTD <b id="roofCltdOut">—</b></span><span>Selected-hour load <b id="roofLoadOut">—</b></span></div>
+        </article>
+
+        <article class="card">
+          <div class="row-between"><div class="card-title"><span class="icon-badge">▤</span><div><h3>External walls</h3><p>Add each exposed wall separately so orientation-specific CLTD can be applied.</p></div></div><button id="addWall" class="btn soft small">+ Add wall</button></div>
+          <div id="walls" class="dynamic-list"></div>
+        </article>
+
+        <article class="card">
+          <div class="row-between"><div class="card-title"><span class="icon-badge">▧</span><div><h3>Windows / glazing</h3><p>Conduction uses hourly glass CLTD; solar load uses orientation-specific SCL from the repository.</p></div></div><button id="addWindow" class="btn soft small">+ Add window</button></div>
+          <div id="windows" class="dynamic-list"></div>
+        </article>
+
+        <article class="card">
+          <div class="card-title"><span class="icon-badge">↕</span><div><h3>Adjacent surfaces</h3><p>Partitions, ceilings and floors use steady conduction: U × A × ΔT.</p></div></div>
+          <div id="adjacentLoads" class="dynamic-list"></div>
+        </article>
+
+        <div class="footer-nav"><button class="btn ghost prev" data-prev="1">← Back</button><button class="btn primary next" data-next="3">Continue <span>→</span></button></div>
+      </section>
+
+      <section class="step-panel" data-step="3">
+        <div class="section-heading"><div><p class="eyebrow">Step 03</p><h2>Internal cooling loads</h2><p>Lighting and people sensible loads use the selected building schedule's CLF table stored in the repository.</p></div><span class="method-chip">Internal gains</span></div>
+        <div class="grid two">
+          <article class="card">
+            <div class="card-title"><span class="icon-badge">✦</span><div><h3>Lighting</h3><p>Connected load × use factor × allowance × CLF.</p></div></div>
+            <div class="form-grid two">
+              <label>Connected lighting (W)<input id="lightWatts" type="number" min="0" value="600" /></label>
+              <label>Use factor<input id="lightUse" type="number" min="0" step="0.01" value="1" /></label>
+              <label>Ballast / special factor<input id="lightBallast" type="number" min="0" step="0.01" value="1" /></label>
+              <label>CLF mode<select id="lightClfMode"><option value="table">Lookup CLF table</option><option value="manual">Manual CLF</option></select></label>
+              <label>Manual CLF<input id="lightClfManual" type="number" min="0" step="0.01" value="1" /></label>
+            </div>
+            <div class="live-strip"><span>Selected-hour lighting load <b id="lightLoadOut">—</b></span></div>
+          </article>
+
+          <article class="card">
+            <div class="card-title"><span class="icon-badge">♙</span><div><h3>People</h3><p>CLF is applied to sensible people gain; latent gain is treated as instantaneous.</p></div></div>
+            <div class="form-grid two">
+              <label>Number of people<input id="peopleCount" type="number" min="0" value="4" /></label>
+              <label>Sensible gain / person (W)<input id="peopleSensible" type="number" min="0" value="75" /></label>
+              <label>Latent gain / person (W)<input id="peopleLatent" type="number" min="0" value="55" /></label>
+              <label>CLF mode<select id="peopleClfMode"><option value="table">Lookup CLF table</option><option value="manual">Manual CLF</option></select></label>
+              <label>Manual CLF<input id="peopleClfManual" type="number" min="0" step="0.01" value="1" /></label>
+            </div>
+            <div class="live-strip"><span>Sensible <b id="peopleSensibleOut">—</b></span><span>Latent <b id="peopleLatentOut">—</b></span></div>
+          </article>
+        </div>
+
+        <article class="card">
+          <div class="row-between"><div class="card-title"><span class="icon-badge">⚡</span><div><h3>Equipment / appliances</h3><p>Use separate sensible and latent ratings so server-room and office equipment can be represented cleanly.</p></div></div><button id="addEquipment" class="btn soft small">+ Add equipment</button></div>
+          <div id="equipment" class="dynamic-list"></div>
+        </article>
+
+        <div class="footer-nav"><button class="btn ghost prev" data-prev="2">← Back</button><button class="btn primary next" data-next="4">Continue <span>→</span></button></div>
+      </section>
+
+      <section class="step-panel" data-step="4">
+        <div class="section-heading"><div><p class="eyebrow">Step 04</p><h2>Outdoor air & miscellaneous loads</h2><p>Add infiltration, ventilation, fan heat, duct heat and a design allowance.</p></div><span class="method-chip">System effects</span></div>
+
+        <div class="grid two">
+          <article class="card">
+            <div class="card-title"><span class="icon-badge">↝</span><div><h3>Infiltration air</h3><p>Sensible and latent loads are calculated from airflow, temperature and humidity-ratio differences.</p></div></div>
+            <div class="form-grid two">
+              <label>Airflow (L/s)<input id="infiltrationLs" type="number" min="0" step="0.1" value="0" /></label>
+              <label>Outdoor air temperature (°C)<input id="infOutC" type="number" step="0.1" value="33" /></label>
+              <label>Indoor air temperature (°C)<input id="infInC" type="number" step="0.1" value="24" /></label>
+              <label>Outdoor humidity ratio (kg/kg)<input id="outW" type="number" min="0" step="0.0001" value="0.0190" /></label>
+              <label>Indoor humidity ratio (kg/kg)<input id="inW" type="number" min="0" step="0.0001" value="0.0093" /></label>
+            </div>
+            <div class="live-strip"><span>Sensible <b id="infSensOut">—</b></span><span>Latent <b id="infLatOut">—</b></span></div>
+          </article>
+
+          <article class="card">
+            <div class="card-title"><span class="icon-badge">◎</span><div><h3>Ventilation / outdoor air</h3><p>Use the required outdoor airflow for the zone.</p></div></div>
+            <div class="form-grid two">
+              <label>Outdoor airflow (L/s)<input id="ventilationLs" type="number" min="0" step="0.1" value="40" /></label>
+              <label>Outdoor air temperature (°C)<input id="ventOutC" type="number" step="0.1" value="33" /></label>
+              <label>Indoor air temperature (°C)<input id="ventInC" type="number" step="0.1" value="24" /></label>
+              <label>Outdoor humidity ratio (kg/kg)<input id="ventOutW" type="number" min="0" step="0.0001" value="0.0190" /></label>
+              <label>Indoor humidity ratio (kg/kg)<input id="ventInW" type="number" min="0" step="0.0001" value="0.0093" /></label>
+            </div>
+            <div class="live-strip"><span>Sensible <b id="ventSensOut">—</b></span><span>Latent <b id="ventLatOut">—</b></span></div>
+          </article>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <div class="card-title"><span class="icon-badge">◉</span><div><h3>Fan & duct heat</h3><p>Electrical fan input converted to heat added to the air stream.</p></div></div>
+            <div class="form-grid two">
+              <label>Fan electrical input (kW)<input id="fanKw" type="number" min="0" step="0.01" value="0" /></label>
+              <label>Fraction of fan heat to air<input id="fanHeatFraction" type="number" min="0" max="1" step="0.01" value="1" /></label>
+              <label>Duct / distribution heat (W)<input id="ductHeatW" type="number" min="0" step="1" value="0" /></label>
+              <label>Other sensible load (W)<input id="otherSensibleW" type="number" min="0" step="1" value="0" /></label>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-title"><span class="icon-badge">＋</span><div><h3>Design allowance</h3><p>Applied after all sensible and latent components are summed.</p></div></div>
+            <div class="form-grid two">
+              <label>Allowance / safety factor (%)<input id="allowancePct" type="number" min="0" step="0.1" value="5" /></label>
+              <label>Notes<input id="designNotes" type="text" placeholder="Optional calculation note" /></label>
+            </div>
+          </article>
+        </div>
+
+        <div class="footer-nav"><button class="btn ghost prev" data-prev="3">← Back</button><button id="runAnalysisFromStep4" class="btn primary">Run 24-hour analysis <span>→</span></button></div>
+      </section>
+
+      <section class="step-panel" data-step="5">
+        <div class="section-heading"><div><p class="eyebrow">Step 05</p><h2>24-hour cooling-load analysis</h2><p>The engine evaluates every hour using the bundled repository lookup tables and identifies the coincident peak.</p></div><button id="rerunAnalysis" class="btn soft">Recalculate</button></div>
+
+        <div class="kpi-grid four">
+          <div class="kpi"><span>Peak total</span><strong id="analysisPeakKw">—</strong><small>kW</small></div>
+          <div class="kpi"><span>Peak hour</span><strong id="analysisPeakHour">—</strong><small>solar time</small></div>
+          <div class="kpi"><span>Peak sensible</span><strong id="analysisPeakSensible">—</strong><small>kW</small></div>
+          <div class="kpi"><span>Daily electrical</span><strong id="analysisDailyKwh">—</strong><small>kWh estimate</small></div>
+        </div>
+
+        <article class="card chart-card">
+          <div class="row-between"><div><h3>Hourly profile</h3><p>Total cooling load, sensible load and window solar load.</p></div><div class="legend"><span class="total"></span>Total <span class="sensible"></span>Sensible <span class="solar"></span>Solar</div></div>
+          <canvas id="loadChart" width="1200" height="380" aria-label="24 hour load chart"></canvas>
+        </article>
+
+        <article class="card">
+          <div class="row-between"><div><h3>Hourly calculation table</h3><p>Values shown in kW; the full table is also written to the downloaded Excel result workbook.</p></div><button id="downloadCsv" class="btn ghost small">Download CSV</button></div>
+          <div class="table-wrap"><table id="hourlyTable"><thead><tr><th>Hour</th><th>Envelope</th><th>Solar</th><th>Internal sensible</th><th>Air sensible</th><th>Latent</th><th>Total</th><th>Electrical</th></tr></thead><tbody></tbody></table></div>
+        </article>
+
+        <div class="footer-nav"><button class="btn ghost prev" data-prev="4">← Back</button><button class="btn primary next" data-next="6">View final results <span>→</span></button></div>
+      </section>
+
+      <section class="step-panel" data-step="6">
+        <div class="section-heading"><div><p class="eyebrow">Step 06</p><h2>Results & report export</h2><p>Review the peak load, then download a multi-sheet Excel workbook using the name you provide.</p></div><span class="method-chip success">Ready to report</span></div>
+
+        <div class="hero-result">
+          <div><span>Peak cooling load</span><strong id="resultPeakKw">—</strong><small>kW total</small></div>
+          <div><span>Refrigeration tons</span><strong id="resultTR">—</strong><small>TR</small></div>
+          <div><span>Equivalent capacity</span><strong id="resultBtuh">—</strong><small>Btu/h</small></div>
+          <div><span>Supply airflow</span><strong id="resultAirflow">—</strong><small>L/s</small></div>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <div class="card-title"><span class="icon-badge">◫</span><div><h3>Peak-hour load breakdown</h3><p>Component values at the hour of maximum total cooling load.</p></div></div>
+            <div id="breakdownBars" class="breakdown"></div>
+          </article>
+
+          <article class="card save-card">
+            <div class="card-title"><span class="icon-badge">☁</span><div><h3>Download result workbook</h3><p>Creates a multi-sheet .xlsx workbook directly in your browser. You can then upload or save it to Google Drive.</p></div></div>
+            <label>Result workbook name<input id="saveResultName" type="text" value="ThermaSpace Cooling Load Result" /></label>
+            <button id="saveToDrive" class="btn primary full">Download Excel workbook</button>
+            <div id="saveResultStatus" class="save-status">No result workbook downloaded yet.</div>
+            <button id="printReport" class="btn ghost full">Print / Save PDF from browser</button>
+          </article>
+        </div>
+
+        <article class="card">
+          <div class="row-between"><div><h3>Recent exports on this browser</h3><p>This local history records workbook names downloaded from this browser.</p></div><button id="refreshSavedResults" class="btn soft small">Clear history</button></div>
+          <div id="savedResults" class="saved-results"><p class="muted">No exported workbooks yet.</p></div>
+        </article>
+
+        <div class="footer-nav"><button class="btn ghost prev" data-prev="5">← Back</button><button id="newCalculation" class="btn soft">Start new calculation</button></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="configDialog" class="modal">
+    <form method="dialog">
+      <div class="modal-head"><div><p class="eyebrow">Lookup data status</p><h3>GitHub repository database</h3></div><button class="icon-btn" value="cancel">×</button></div>
+      <div id="configDetails" class="config-details"></div>
+      <div class="notice"><b>No OAuth client ID, Apps Script, Google Cloud Console, MySQL, or always-on Colab runtime is used.</b> The public website performs the calculations in the browser.</div>
+      <div class="modal-actions"><button class="btn primary" value="cancel">Close</button></div>
+    </form>
+  </dialog>
+
+  <template id="wallTemplate">
+    <div class="dynamic-item wall-item">
+      <div class="item-head"><strong>Wall <span class="item-number"></span></strong><button type="button" class="remove-item">Remove</button></div>
+      <div class="form-grid six">
+        <label>Wall type<select class="wall-type"></select></label>
+        <label>Orientation<select class="wall-orientation"><option>N</option><option>NE</option><option>E</option><option>SE</option><option>S</option><option>SW</option><option>W</option><option>NW</option></select></label>
+        <label>U-value (W/m²·K)<input class="wall-u" type="number" min="0" step="0.01" value="1.8" /></label>
+        <label>Length (m)<input class="wall-length" type="number" min="0" step="0.01" value="5" /></label>
+        <label>Height (m)<input class="wall-height" type="number" min="0" step="0.01" value="3" /></label>
+        <label>Openings area (m²)<input class="wall-openings" type="number" min="0" step="0.01" value="0" /></label>
+      </div>
+      <div class="item-meta"><span class="wall-source">Lookup profile: —</span><span>Net area <b class="wall-area-out">—</b></span><span>CLTD <b class="wall-cltd-out">—</b></span><span>Load <b class="wall-load-out">—</b></span></div>
+    </div>
+  </template>
+
+  <template id="windowTemplate">
+    <div class="dynamic-item window-item">
+      <div class="item-head"><strong>Window <span class="item-number"></span></strong><button type="button" class="remove-item">Remove</button></div>
+      <div class="form-grid five">
+        <label>Orientation<select class="window-orientation"><option>N</option><option>NE</option><option>E</option><option>SE</option><option>S</option><option>SW</option><option>W</option><option>NW</option></select></label>
+        <label>Area (m²)<input class="window-area" type="number" min="0" step="0.01" value="2" /></label>
+        <label>U-value (W/m²·K)<input class="window-u" type="number" min="0" step="0.01" value="5.7" /></label>
+        <label>Shading coefficient<input class="window-sc" type="number" min="0" step="0.01" value="0.8" /></label>
+        <label>Label<input class="window-label" type="text" value="Glazing" /></label>
+      </div>
+      <div class="item-meta"><span>Glass CLTD <b class="window-cltd-out">—</b></span><span>SCL <b class="window-scl-out">—</b></span><span>Conduction <b class="window-cond-out">—</b></span><span>Solar <b class="window-solar-out">—</b></span></div>
+    </div>
+  </template>
+
+  <template id="adjacentTemplate">
+    <div class="dynamic-item adjacent-item">
+      <div class="item-head"><strong class="adjacent-name">Partition</strong></div>
+      <div class="form-grid four">
+        <label>U-value (W/m²·K)<input class="adj-u" type="number" min="0" step="0.01" value="1.5" /></label>
+        <label>Area (m²)<input class="adj-area" type="number" min="0" step="0.01" value="0" /></label>
+        <label>Adjacent temperature (°C)<input class="adj-out" type="number" step="0.1" value="29" /></label>
+        <label>Room temperature (°C)<input class="adj-in" type="number" step="0.1" value="24" /></label>
+      </div>
+      <div class="item-meta"><span>Load <b class="adj-load-out">0 W</b></span></div>
+    </div>
+  </template>
+
+  <template id="equipmentTemplate">
+    <div class="dynamic-item equipment-item">
+      <div class="item-head"><strong>Equipment <span class="item-number"></span></strong><button type="button" class="remove-item">Remove</button></div>
+      <div class="form-grid six">
+        <label>Name<input class="equip-name" type="text" value="Equipment" /></label>
+        <label>Sensible rating (W)<input class="equip-sensible" type="number" min="0" step="1" value="500" /></label>
+        <label>Latent rating (W)<input class="equip-latent" type="number" min="0" step="1" value="0" /></label>
+        <label>Use factor<input class="equip-use" type="number" min="0" step="0.01" value="1" /></label>
+        <label>Apply occupancy CLF?<select class="equip-clf-mode"><option value="none">No / 24-hour</option><option value="table">Yes, lookup CLF</option><option value="manual">Manual CLF</option></select></label>
+        <label>Manual CLF<input class="equip-clf" type="number" min="0" step="0.01" value="1" /></label>
+      </div>
+      <div class="item-meta"><span>Sensible <b class="equip-sens-out">—</b></span><span>Latent <b class="equip-lat-out">—</b></span></div>
+    </div>
+  </template>
+
+<script>
+/* Embedded ThermaSpace lookup database. */
+/* Auto-generated ThermaSpace lookup database. */
+window.THERMASPACE_DB = {"meta":{"name":"ThermaSpace CLTD Database","generated_from":"data/tables/*.csv","basis":"User-supplied Sri Lanka adjusted CLTD/SCL/CLF tables","warning":"West wall hour 19 value is preserved exactly as supplied and should be verified."},"sheets":{"Config":[{"key":"database_version","value":"2026-09-16-drive-v1"},{"key":"method","value":"CLTD / SCL / CLF"},{"key":"location_basis","value":"Colombo, Sri Lanka / Latitude 8N adjusted notes"},{"key":"baseline_outdoor_db_c","value":33},{"key":"baseline_daily_range_c","value":8},{"key":"baseline_indoor_db_c","value":24},{"key":"baseline_mean_outdoor_c","value":29},{"key":"baseline_cltd_correction_k","value":1.1},{"key":"website_note","value":"CLTD = stored CLTD + (new design correction - 1.1 K baseline correction)."}],"Roof_Types":[{"roof_type_code":"R1","roof_type_name":"Pitched roof without suspended ceiling","default_u_w_m2k":"","notes":"Supplied Sri Lanka adjusted roof type 1"},{"roof_type_code":"R2","roof_type_name":"Pitched roof with suspended ceiling","default_u_w_m2k":"","notes":"Supplied Sri Lanka adjusted roof type 2"},{"roof_type_code":"R3","roof_type_name":"Concrete slab with cover & suspended ceiling","default_u_w_m2k":"","notes":"Supplied Sri Lanka adjusted roof type 3"},{"roof_type_code":"R4","roof_type_name":"Concrete slab & attic ventilation with good insulation & suspended ceiling","default_u_w_m2k":"","notes":"Supplied Sri Lanka adjusted roof type 4"}],"Roof_CLTD":[{"roof_type_code":"R1","hour":1,"cltd_k":1.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":2,"cltd_k":0.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":3,"cltd_k":-0.9,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":4,"cltd_k":-1.9,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":5,"cltd_k":-1.9,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":6,"cltd_k":-1.9,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":7,"cltd_k":1.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":8,"cltd_k":8.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":9,"cltd_k":17.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":10,"cltd_k":26.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":11,"cltd_k":34.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":12,"cltd_k":42.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":13,"cltd_k":47.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":14,"cltd_k":50.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":15,"cltd_k":50.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":16,"cltd_k":47.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":17,"cltd_k":42.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":18,"cltd_k":34.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":19,"cltd_k":25.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":20,"cltd_k":15.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":21,"cltd_k":9.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":22,"cltd_k":6.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":23,"cltd_k":4.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R1","hour":24,"cltd_k":2.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":1,"cltd_k":2.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":2,"cltd_k":1.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":3,"cltd_k":0.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":4,"cltd_k":-0.9,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":5,"cltd_k":-1.9,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":6,"cltd_k":-1.9,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":7,"cltd_k":-0.9,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":8,"cltd_k":3.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":9,"cltd_k":10.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":10,"cltd_k":19.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":11,"cltd_k":28.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":12,"cltd_k":35.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":13,"cltd_k":42.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":14,"cltd_k":47.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":15,"cltd_k":49.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":16,"cltd_k":48.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":17,"cltd_k":45.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":18,"cltd_k":40.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":19,"cltd_k":32.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":20,"cltd_k":23.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":21,"cltd_k":15.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":22,"cltd_k":9.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":23,"cltd_k":6.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R2","hour":24,"cltd_k":4.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":1,"cltd_k":8.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":2,"cltd_k":5.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":3,"cltd_k":4.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":4,"cltd_k":2.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":5,"cltd_k":1.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":6,"cltd_k":0.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":7,"cltd_k":1.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":8,"cltd_k":4.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":9,"cltd_k":8.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":10,"cltd_k":14.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":11,"cltd_k":20.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":12,"cltd_k":27.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":13,"cltd_k":33.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":14,"cltd_k":38.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":15,"cltd_k":41.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":16,"cltd_k":42.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":17,"cltd_k":42.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":18,"cltd_k":38.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":19,"cltd_k":34.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":20,"cltd_k":28.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":21,"cltd_k":22.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":22,"cltd_k":18.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":23,"cltd_k":14.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R3","hour":24,"cltd_k":10.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":1,"cltd_k":10.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":2,"cltd_k":7.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":3,"cltd_k":5.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":4,"cltd_k":3.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":5,"cltd_k":2.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":6,"cltd_k":0.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":7,"cltd_k":-0.9,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":8,"cltd_k":-0.9,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":9,"cltd_k":1.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":10,"cltd_k":5.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":11,"cltd_k":10.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":12,"cltd_k":17.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":13,"cltd_k":24.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":14,"cltd_k":31.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":15,"cltd_k":37.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":16,"cltd_k":42.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":17,"cltd_k":44.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":18,"cltd_k":44.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":19,"cltd_k":42.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":20,"cltd_k":38.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":21,"cltd_k":32.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":22,"cltd_k":26.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":23,"cltd_k":20.1,"source":"Sri Lanka adjusted note p.1"},{"roof_type_code":"R4","hour":24,"cltd_k":14.1,"source":"Sri Lanka adjusted note p.1"}],"Wall_Types":[{"wall_type_code":"SL-WALL-DEFAULT","wall_type_name":"Sri Lanka adjusted external wall profile (provided table)","profile_code":"SL-8N-DEFAULT","default_u_w_m2k":"","notes":"Use the actual wall U-value in the website. Add extra rows/profiles only when source values have been digitized and verified."}],"Wall_CLTD":[{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":1,"cltd_k":12.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":2,"cltd_k":10.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":3,"cltd_k":9.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":4,"cltd_k":8.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":5,"cltd_k":7.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":6,"cltd_k":6.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":7,"cltd_k":6.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":8,"cltd_k":7.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":9,"cltd_k":8.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":10,"cltd_k":9.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":11,"cltd_k":10.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":12,"cltd_k":12.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":13,"cltd_k":13.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":14,"cltd_k":15.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":15,"cltd_k":17.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":16,"cltd_k":18.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":17,"cltd_k":19.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":18,"cltd_k":20.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":19,"cltd_k":21.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":20,"cltd_k":21.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":21,"cltd_k":20.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":22,"cltd_k":18.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":23,"cltd_k":17.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"N","hour":24,"cltd_k":14.1,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":1,"cltd_k":9.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":2,"cltd_k":7.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":3,"cltd_k":6.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":4,"cltd_k":5.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":5,"cltd_k":4.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":6,"cltd_k":3.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":7,"cltd_k":3.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":8,"cltd_k":5.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":9,"cltd_k":10.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":10,"cltd_k":15.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":11,"cltd_k":19.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":12,"cltd_k":21.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":13,"cltd_k":21.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":14,"cltd_k":21.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":15,"cltd_k":20.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":16,"cltd_k":20.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":17,"cltd_k":20.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":18,"cltd_k":19.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":19,"cltd_k":19.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":20,"cltd_k":17.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":21,"cltd_k":16.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":22,"cltd_k":14.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":23,"cltd_k":12.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NE","hour":24,"cltd_k":10.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":1,"cltd_k":5.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":2,"cltd_k":3.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":3,"cltd_k":2.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":4,"cltd_k":1.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":5,"cltd_k":0.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":6,"cltd_k":0.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":7,"cltd_k":0.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":8,"cltd_k":2.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":9,"cltd_k":7.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":10,"cltd_k":14.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":11,"cltd_k":20.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":12,"cltd_k":24.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":13,"cltd_k":26.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":14,"cltd_k":25.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":15,"cltd_k":23.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":16,"cltd_k":21.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":17,"cltd_k":20.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":18,"cltd_k":18.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":19,"cltd_k":17.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":20,"cltd_k":15.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":21,"cltd_k":13.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":22,"cltd_k":11.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":23,"cltd_k":8.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"E","hour":24,"cltd_k":7.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":1,"cltd_k":2.655556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":2,"cltd_k":0.655556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":3,"cltd_k":-0.34444,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":4,"cltd_k":-1.34444,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":5,"cltd_k":-2.34444,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":6,"cltd_k":-2.34444,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":7,"cltd_k":-3.34444,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":8,"cltd_k":-2.34444,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":9,"cltd_k":0.655556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":10,"cltd_k":5.655556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":11,"cltd_k":11.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":12,"cltd_k":16.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":13,"cltd_k":20.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":14,"cltd_k":22.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":15,"cltd_k":22.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":16,"cltd_k":20.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":17,"cltd_k":19.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":18,"cltd_k":17.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":19,"cltd_k":15.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":20,"cltd_k":13.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":21,"cltd_k":10.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":22,"cltd_k":8.655556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":23,"cltd_k":6.655556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SE","hour":24,"cltd_k":4.655556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":1,"cltd_k":3.211111,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":2,"cltd_k":1.211111,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":3,"cltd_k":0.211111,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":4,"cltd_k":-0.78889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":5,"cltd_k":-1.78889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":6,"cltd_k":-1.78889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":7,"cltd_k":-2.78889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":8,"cltd_k":-1.78889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":9,"cltd_k":-2.78889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":10,"cltd_k":-1.78889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":11,"cltd_k":0.211111,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":12,"cltd_k":4.211111,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":13,"cltd_k":8.211111,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":14,"cltd_k":13.21111,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":15,"cltd_k":16.21111,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":16,"cltd_k":20.21111,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":17,"cltd_k":21.21111,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":18,"cltd_k":20.21111,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":19,"cltd_k":19.21111,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":20,"cltd_k":16.21111,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":21,"cltd_k":14.21111,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":22,"cltd_k":10.21111,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":23,"cltd_k":8.211111,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"S","hour":24,"cltd_k":5.211111,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":1,"cltd_k":6.655556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":2,"cltd_k":3.655556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":3,"cltd_k":1.655556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":4,"cltd_k":-0.34444,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":5,"cltd_k":-1.34444,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":6,"cltd_k":-2.34444,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":7,"cltd_k":-3.34444,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":8,"cltd_k":-3.34444,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":9,"cltd_k":-3.34444,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":10,"cltd_k":-2.34444,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":11,"cltd_k":-0.34444,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":12,"cltd_k":0.655556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":13,"cltd_k":3.655556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":14,"cltd_k":6.655556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":15,"cltd_k":11.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":16,"cltd_k":16.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":17,"cltd_k":22.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":18,"cltd_k":25.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":19,"cltd_k":28.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":20,"cltd_k":28.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":21,"cltd_k":24.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":22,"cltd_k":19.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":23,"cltd_k":14.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"SW","hour":24,"cltd_k":10.65556,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":1,"cltd_k":11.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":2,"cltd_k":7.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":3,"cltd_k":5.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":4,"cltd_k":3.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":5,"cltd_k":1.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":6,"cltd_k":0.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":7,"cltd_k":0.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":8,"cltd_k":-0.01111,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":9,"cltd_k":0.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":10,"cltd_k":0.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":11,"cltd_k":2.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":12,"cltd_k":3.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":13,"cltd_k":5.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":14,"cltd_k":7.988889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":15,"cltd_k":11.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":16,"cltd_k":16.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":17,"cltd_k":21.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":18,"cltd_k":27.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":19,"cltd_k":2.988889,"source":"Sri Lanka adjusted note p.2","note":"Preserved exactly from supplied table; verify source anomaly."},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":20,"cltd_k":35.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":21,"cltd_k":32.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":22,"cltd_k":27.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":23,"cltd_k":21.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"W","hour":24,"cltd_k":16.98889,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":1,"cltd_k":13.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":2,"cltd_k":10.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":3,"cltd_k":8.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":4,"cltd_k":6.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":5,"cltd_k":5.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":6,"cltd_k":4.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":7,"cltd_k":3.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":8,"cltd_k":3.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":9,"cltd_k":3.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":10,"cltd_k":4.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":11,"cltd_k":5.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":12,"cltd_k":7.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":13,"cltd_k":9.322222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":14,"cltd_k":11.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":15,"cltd_k":14.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":16,"cltd_k":16.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":17,"cltd_k":20.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":18,"cltd_k":24.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":19,"cltd_k":28.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":20,"cltd_k":30.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":21,"cltd_k":30.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":22,"cltd_k":26.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":23,"cltd_k":21.32222,"source":"Sri Lanka adjusted note p.2","note":""},{"profile_code":"SL-8N-DEFAULT","orientation":"NW","hour":24,"cltd_k":17.32222,"source":"Sri Lanka adjusted note p.2","note":""}],"Glass_CLTD":[{"hour":1,"cltd_k":3.1,"source":"Sri Lanka adjusted note p.4"},{"hour":2,"cltd_k":2.1,"source":"Sri Lanka adjusted note p.4"},{"hour":3,"cltd_k":1.1,"source":"Sri Lanka adjusted note p.4"},{"hour":4,"cltd_k":1.1,"source":"Sri Lanka adjusted note p.4"},{"hour":5,"cltd_k":1.1,"source":"Sri Lanka adjusted note p.4"},{"hour":6,"cltd_k":1.1,"source":"Sri Lanka adjusted note p.4"},{"hour":7,"cltd_k":1.1,"source":"Sri Lanka adjusted note p.4"},{"hour":8,"cltd_k":2.1,"source":"Sri Lanka adjusted note p.4"},{"hour":9,"cltd_k":3.1,"source":"Sri Lanka adjusted note p.4"},{"hour":10,"cltd_k":4.1,"source":"Sri Lanka adjusted note p.4"},{"hour":11,"cltd_k":6.1,"source":"Sri Lanka adjusted note p.4"},{"hour":12,"cltd_k":7.1,"source":"Sri Lanka adjusted note p.4"},{"hour":13,"cltd_k":9.1,"source":"Sri Lanka adjusted note p.4"},{"hour":14,"cltd_k":9.1,"source":"Sri Lanka adjusted note p.4"},{"hour":15,"cltd_k":10.1,"source":"Sri Lanka adjusted note p.4"},{"hour":16,"cltd_k":10.1,"source":"Sri Lanka adjusted note p.4"},{"hour":17,"cltd_k":9.1,"source":"Sri Lanka adjusted note p.4"},{"hour":18,"cltd_k":9.1,"source":"Sri Lanka adjusted note p.4"},{"hour":19,"cltd_k":8.1,"source":"Sri Lanka adjusted note p.4"},{"hour":20,"cltd_k":6.1,"source":"Sri Lanka adjusted note p.4"},{"hour":21,"cltd_k":5.1,"source":"Sri Lanka adjusted note p.4"},{"hour":22,"cltd_k":4.1,"source":"Sri Lanka adjusted note p.4"},{"hour":23,"cltd_k":4.1,"source":"Sri Lanka adjusted note p.4"},{"hour":24,"cltd_k":3.1,"source":"Sri Lanka adjusted note p.4"}],"SCL":[{"orientation":"N","hour":1,"scl_w_m2":20.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":2,"scl_w_m2":20.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":3,"scl_w_m2":16.9,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":4,"scl_w_m2":16.9,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":5,"scl_w_m2":16.9,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":6,"scl_w_m2":98.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":7,"scl_w_m2":93.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":8,"scl_w_m2":98.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":9,"scl_w_m2":110.5,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":10,"scl_w_m2":123.5,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":11,"scl_w_m2":135.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":12,"scl_w_m2":139.1,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":13,"scl_w_m2":143,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":14,"scl_w_m2":139.1,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":15,"scl_w_m2":131.3,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":16,"scl_w_m2":118.3,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":17,"scl_w_m2":118.3,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":18,"scl_w_m2":139.1,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":19,"scl_w_m2":57.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":20,"scl_w_m2":41.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":21,"scl_w_m2":32.5,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":22,"scl_w_m2":28.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":23,"scl_w_m2":24.7,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"N","hour":24,"scl_w_m2":24.7,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":1,"scl_w_m2":26.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":2,"scl_w_m2":22.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":3,"scl_w_m2":22.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":4,"scl_w_m2":19.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":5,"scl_w_m2":22.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":6,"scl_w_m2":283.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":7,"scl_w_m2":400.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":8,"scl_w_m2":404.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":9,"scl_w_m2":332.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":10,"scl_w_m2":230.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":11,"scl_w_m2":184.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":12,"scl_w_m2":177.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":13,"scl_w_m2":170.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":14,"scl_w_m2":162,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":15,"scl_w_m2":151.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":16,"scl_w_m2":135.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":17,"scl_w_m2":117.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":18,"scl_w_m2":94.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":19,"scl_w_m2":60,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":20,"scl_w_m2":49.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":21,"scl_w_m2":42,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":22,"scl_w_m2":38.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":23,"scl_w_m2":33.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NE","hour":24,"scl_w_m2":30,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":1,"scl_w_m2":28,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":2,"scl_w_m2":25,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":3,"scl_w_m2":25,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":4,"scl_w_m2":22,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":5,"scl_w_m2":25,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":6,"scl_w_m2":261,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":7,"scl_w_m2":410,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":8,"scl_w_m2":466,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":9,"scl_w_m2":457,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":10,"scl_w_m2":391,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":11,"scl_w_m2":280,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":12,"scl_w_m2":195,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":13,"scl_w_m2":176,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":14,"scl_w_m2":164,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":15,"scl_w_m2":148,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":16,"scl_w_m2":135,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":17,"scl_w_m2":117,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":18,"scl_w_m2":95,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":19,"scl_w_m2":63,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":20,"scl_w_m2":54,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":21,"scl_w_m2":47,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":22,"scl_w_m2":41,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":23,"scl_w_m2":38,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"E","hour":24,"scl_w_m2":35,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":1,"scl_w_m2":18.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":2,"scl_w_m2":16.25,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":3,"scl_w_m2":14.3,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":4,"scl_w_m2":12.35,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":5,"scl_w_m2":12.35,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":6,"scl_w_m2":92.3,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":7,"scl_w_m2":167.7,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":8,"scl_w_m2":219.05,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":9,"scl_w_m2":247.65,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":10,"scl_w_m2":247.65,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":11,"scl_w_m2":219.05,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":12,"scl_w_m2":167.7,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":13,"scl_w_m2":120.9,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":14,"scl_w_m2":104.65,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":15,"scl_w_m2":96.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":16,"scl_w_m2":85.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":17,"scl_w_m2":73.45,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":18,"scl_w_m2":59.15,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":19,"scl_w_m2":39,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":20,"scl_w_m2":32.5,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":21,"scl_w_m2":28.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":22,"scl_w_m2":26.65,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":23,"scl_w_m2":22.75,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SE","hour":24,"scl_w_m2":20.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":1,"scl_w_m2":8.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":2,"scl_w_m2":8.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":3,"scl_w_m2":7.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":4,"scl_w_m2":6.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":5,"scl_w_m2":6.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":6,"scl_w_m2":15.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":7,"scl_w_m2":22.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":8,"scl_w_m2":28.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":9,"scl_w_m2":45.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":10,"scl_w_m2":68,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":11,"scl_w_m2":88.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":12,"scl_w_m2":99.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":13,"scl_w_m2":99.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":14,"scl_w_m2":88.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":15,"scl_w_m2":68,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":16,"scl_w_m2":50.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":17,"scl_w_m2":41.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":18,"scl_w_m2":32.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":19,"scl_w_m2":20,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":20,"scl_w_m2":16.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":21,"scl_w_m2":15.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":22,"scl_w_m2":12.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":23,"scl_w_m2":11.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"S","hour":24,"scl_w_m2":10,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":1,"scl_w_m2":17.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":2,"scl_w_m2":15.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":3,"scl_w_m2":14,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":4,"scl_w_m2":12.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":5,"scl_w_m2":11.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":6,"scl_w_m2":18.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":7,"scl_w_m2":26.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":8,"scl_w_m2":32.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":9,"scl_w_m2":36.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":10,"scl_w_m2":41.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":11,"scl_w_m2":45.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":12,"scl_w_m2":72,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":13,"scl_w_m2":108.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":14,"scl_w_m2":138.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":15,"scl_w_m2":156.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":16,"scl_w_m2":157.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":17,"scl_w_m2":140,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":18,"scl_w_m2":100.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":19,"scl_w_m2":46.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":20,"scl_w_m2":35.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":21,"scl_w_m2":28.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":22,"scl_w_m2":25.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":23,"scl_w_m2":21.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"SW","hour":24,"scl_w_m2":18.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":1,"scl_w_m2":54,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":2,"scl_w_m2":47,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":3,"scl_w_m2":41,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":4,"scl_w_m2":38,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":5,"scl_w_m2":35,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":6,"scl_w_m2":54,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":7,"scl_w_m2":69,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":8,"scl_w_m2":85,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":9,"scl_w_m2":98,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":10,"scl_w_m2":107,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":11,"scl_w_m2":113,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":12,"scl_w_m2":117,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":13,"scl_w_m2":186,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":14,"scl_w_m2":309,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":15,"scl_w_m2":416,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":16,"scl_w_m2":482,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":17,"scl_w_m2":491,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":18,"scl_w_m2":403,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":19,"scl_w_m2":158,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":20,"scl_w_m2":110,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":21,"scl_w_m2":88,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":22,"scl_w_m2":76,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":23,"scl_w_m2":66,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"W","hour":24,"scl_w_m2":60,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":1,"scl_w_m2":45.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":2,"scl_w_m2":42,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":3,"scl_w_m2":38.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":4,"scl_w_m2":33.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":5,"scl_w_m2":30,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":6,"scl_w_m2":52.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":7,"scl_w_m2":75.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":8,"scl_w_m2":94.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":9,"scl_w_m2":109.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":10,"scl_w_m2":121.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":11,"scl_w_m2":128.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":12,"scl_w_m2":135.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":13,"scl_w_m2":135.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":14,"scl_w_m2":166.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":15,"scl_w_m2":276,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":16,"scl_w_m2":385.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":17,"scl_w_m2":446.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":18,"scl_w_m2":404.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":19,"scl_w_m2":147.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":20,"scl_w_m2":98.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":21,"scl_w_m2":79.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":22,"scl_w_m2":64.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":23,"scl_w_m2":56.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"NW","hour":24,"scl_w_m2":49.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":1,"scl_w_m2":83.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":2,"scl_w_m2":72.6,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":3,"scl_w_m2":66,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":4,"scl_w_m2":59.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":5,"scl_w_m2":55,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":6,"scl_w_m2":117.7,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":7,"scl_w_m2":235.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":8,"scl_w_m2":370.7,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":9,"scl_w_m2":499.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":10,"scl_w_m2":606.1,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":11,"scl_w_m2":689.7,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":12,"scl_w_m2":734.8,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":13,"scl_w_m2":744.7,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":14,"scl_w_m2":717.2,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":15,"scl_w_m2":654.5,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":16,"scl_w_m2":554.4,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":17,"scl_w_m2":425.7,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":18,"scl_w_m2":287.1,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":19,"scl_w_m2":183.7,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":20,"scl_w_m2":152.9,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":21,"scl_w_m2":132,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":22,"scl_w_m2":117.7,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":23,"scl_w_m2":104.5,"source":"Sri Lanka adjusted note pp.3-4"},{"orientation":"HORIZ","hour":24,"scl_w_m2":93.5,"source":"Sri Lanka adjusted note pp.3-4"}],"CLF_Occupancy":[{"building_type":"office","hour":1,"clf":0.08,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":2,"clf":0.06,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":3,"clf":0.05,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":4,"clf":0.04,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":5,"clf":0.04,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":6,"clf":0.03,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":7,"clf":0.02,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":8,"clf":0.02,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":9,"clf":0.02,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":10,"clf":0.61,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":11,"clf":0.69,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":12,"clf":0.75,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":13,"clf":0.79,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":14,"clf":0.83,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":15,"clf":0.86,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":16,"clf":0.89,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":17,"clf":0.91,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":18,"clf":0.32,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":19,"clf":0.26,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":20,"clf":0.21,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":21,"clf":0.17,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":22,"clf":0.14,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":23,"clf":0.11,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"office","hour":24,"clf":0.09,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":1,"clf":0.85,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":2,"clf":0.88,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":3,"clf":0.9,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":4,"clf":0.92,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":5,"clf":0.93,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":6,"clf":0.94,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":7,"clf":0.95,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":8,"clf":0.96,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":9,"clf":0.97,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":10,"clf":0.97,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":11,"clf":0.38,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":12,"clf":0.3,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":13,"clf":0.25,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":14,"clf":0.2,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":15,"clf":0.17,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":16,"clf":0.14,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":17,"clf":0.11,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":18,"clf":0.09,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":19,"clf":0.08,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":20,"clf":0.06,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":21,"clf":0.65,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":22,"clf":0.72,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":23,"clf":0.77,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"hotel","hour":24,"clf":0.82,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":1,"clf":0.38,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":2,"clf":0.3,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":3,"clf":0.25,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":4,"clf":0.2,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":5,"clf":0.17,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":6,"clf":0.14,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":7,"clf":0.11,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":8,"clf":0.09,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":9,"clf":0.08,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":10,"clf":0.06,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":11,"clf":0.65,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":12,"clf":0.72,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":13,"clf":0.77,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":14,"clf":0.82,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":15,"clf":0.85,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":16,"clf":0.88,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":17,"clf":0.9,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":18,"clf":0.92,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":19,"clf":0.93,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":20,"clf":0.94,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":21,"clf":0.95,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":22,"clf":0.96,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":23,"clf":0.97,"source":"Sri Lanka adjusted note pp.4-5"},{"building_type":"restaurant","hour":24,"clf":0.97,"source":"Sri Lanka adjusted note pp.4-5"}],"CLF_Lighting":[{"building_type":"office","hour":1,"clf":0.06,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":2,"clf":0.05,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":3,"clf":0.05,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":4,"clf":0.05,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":5,"clf":0.04,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":6,"clf":0.04,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":7,"clf":0.03,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":8,"clf":0.03,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":9,"clf":0.03,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":10,"clf":0.72,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":11,"clf":0.8,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":12,"clf":0.84,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":13,"clf":0.87,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":14,"clf":0.88,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":15,"clf":0.89,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":16,"clf":0.9,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":17,"clf":0.91,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":18,"clf":0.23,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":19,"clf":0.15,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":20,"clf":0.11,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":21,"clf":0.09,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":22,"clf":0.08,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":23,"clf":0.07,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"office","hour":24,"clf":0.07,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":1,"clf":0.91,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":2,"clf":0.92,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":3,"clf":0.92,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":4,"clf":0.93,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":5,"clf":0.94,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":6,"clf":0.94,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":7,"clf":0.95,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":8,"clf":0.95,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":9,"clf":0.96,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":10,"clf":0.96,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":11,"clf":0.27,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":12,"clf":0.19,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":13,"clf":0.15,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":14,"clf":0.13,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":15,"clf":0.11,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":16,"clf":0.1,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":17,"clf":0.09,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":18,"clf":0.08,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":19,"clf":0.08,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":20,"clf":0.07,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":21,"clf":0.75,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":22,"clf":0.84,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":23,"clf":0.87,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"hotel","hour":24,"clf":0.89,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":1,"clf":0.27,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":2,"clf":0.19,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":3,"clf":0.15,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":4,"clf":0.13,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":5,"clf":0.11,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":6,"clf":0.1,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":7,"clf":0.09,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":8,"clf":0.08,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":9,"clf":0.08,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":10,"clf":0.07,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":11,"clf":0.75,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":12,"clf":0.84,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":13,"clf":0.87,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":14,"clf":0.89,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":15,"clf":0.91,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":16,"clf":0.92,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":17,"clf":0.92,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":18,"clf":0.93,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":19,"clf":0.94,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":20,"clf":0.94,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":21,"clf":0.95,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":22,"clf":0.95,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":23,"clf":0.96,"source":"Sri Lanka adjusted note pp.5-6"},{"building_type":"restaurant","hour":24,"clf":0.96,"source":"Sri Lanka adjusted note pp.5-6"}]}};
+
+</script>
+<script>
+/* Embedded ThermaSpace application. */
+(() => {
+  'use strict';
+
+  const W_TO_BTUH = 3.412141633;
+  const W_PER_TR = 3516.85284;
+  const AIR_CP_W_PER_LS_K = 1.206;
+  const LATENT_W_PER_LS_DW = 3000;
+
+  const $ = (s, root = document) => root.querySelector(s);
+  const $$ = (s, root = document) => [...root.querySelectorAll(s)];
+  const num = (s, d = 0, root = document) => {
+    const el = typeof s === 'string' ? $(s, root) : s;
+    const n = Number(el?.value);
+    return Number.isFinite(n) ? n : d;
+  };
+  const text = (s, d = '', root = document) => (typeof s === 'string' ? $(s, root) : s)?.value?.trim() || d;
+  const fmt = (n, digits = 2) => Number.isFinite(Number(n)) ? Number(n).toLocaleString(undefined, { maximumFractionDigits: digits, minimumFractionDigits: digits }) : '—';
+  const kw = w => `${fmt(w / 1000, 2)} kW`;
+  const clamp0 = n => Math.max(0, Number(n) || 0);
+  const escapeHtml = s => String(s ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+
+  const state = {
+    databaseLoaded: false,
+    db: null,
+    results: null,
+    currentStep: 1,
+    serverInfo: null
+  };
+
+  function toast(message, ms = 3200) {
+    const el = $('#toast');
+    el.textContent = message;
+    el.classList.add('show');
+    clearTimeout(toast.t);
+    toast.t = setTimeout(() => el.classList.remove('show'), ms);
+  }
+
+  async function init() {
+    populateHours();
+    setupNavigation();
+    setupDynamicSections();
+    setupEvents();
+    createAdjacentSurface('Partition');
+    createAdjacentSurface('Ceiling');
+    createAdjacentSurface('Floor');
+    addWall();
+    addWindow();
+    addEquipment('Equipment', 500, 0);
+    syncAirTemperatures();
+    await loadDatabase();
+    renderRecentExports();
+  }
+
+  function populateHours() {
+    const sel = $('#designHour');
+    sel.innerHTML = Array.from({ length: 24 }, (_, i) => `<option value="${i + 1}" ${i + 1 === 15 ? 'selected' : ''}>${String(i + 1).padStart(2,'0')}:00</option>`).join('');
+  }
+
+  function setupNavigation() {
+    $$('.step-link').forEach(btn => btn.addEventListener('click', () => goStep(Number(btn.dataset.step))));
+    $$('.next').forEach(btn => btn.addEventListener('click', () => goStep(Number(btn.dataset.next))));
+    $$('.prev').forEach(btn => btn.addEventListener('click', () => goStep(Number(btn.dataset.prev))));
+  }
+  function goStep(step) {
+    state.currentStep = Math.min(6, Math.max(1, step));
+    $$('.step-panel').forEach(s => s.classList.toggle('active', Number(s.dataset.step) === state.currentStep));
+    $$('.step-link').forEach(s => s.classList.toggle('active', Number(s.dataset.step) === state.currentStep));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (state.currentStep === 6 && state.results) renderFinalResults();
+  }
+
+  function setupDynamicSections() {
+    $('#addWall').addEventListener('click', addWall);
+    $('#addWindow').addEventListener('click', addWindow);
+    $('#addEquipment').addEventListener('click', () => addEquipment('Equipment', 500, 0));
+  }
+
+  function setupEvents() {
+    $('#connectGoogle').addEventListener('click', async () => { await loadDatabase(true); });
+    $('#showConfig').addEventListener('click', () => { showDataStatus(); $('#configDialog').showModal(); });
+    $('#runAnalysisFromStep4').addEventListener('click', () => { if (runAnalysis()) goStep(5); });
+    $('#rerunAnalysis').addEventListener('click', runAnalysis);
+    $('#downloadCsv').addEventListener('click', downloadHourlyCsv);
+    $('#saveToDrive').addEventListener('click', downloadResultWorkbook);
+    $('#refreshSavedResults').addEventListener('click', clearRecentExports);
+    $('#printReport').addEventListener('click', () => window.print());
+    $('#newCalculation').addEventListener('click', () => { goStep(1); toast('Ready for a new calculation. Change the project inputs and recalculate.'); });
+    $('#resultFileName').addEventListener('input', e => { $('#saveResultName').value = e.target.value; });
+
+    ['#outdoorDb','#dailyRange','#indoorDb','#designHour','#roofType','#roofU','#roofLength','#roofWidth','#buildingType',
+      '#lightWatts','#lightUse','#lightBallast','#lightClfMode','#lightClfManual','#peopleCount','#peopleSensible','#peopleLatent','#peopleClfMode','#peopleClfManual',
+      '#infiltrationLs','#infOutC','#infInC','#outW','#inW','#ventilationLs','#ventOutC','#ventInC','#ventOutW','#ventInW','#fanKw','#fanHeatFraction','#ductHeatW','#otherSensibleW','#allowancePct','#applyCltdCorrection']
+      .forEach(sel => $(sel)?.addEventListener('input', updateLivePreview));
+    $('#indoorDb').addEventListener('input', syncAirTemperatures);
+    $('#outdoorDb').addEventListener('input', syncAirTemperatures);
+    document.addEventListener('input', e => { if (e.target.closest('.dynamic-item')) updateLivePreview(); });
+    document.addEventListener('change', e => { if (e.target.closest('.dynamic-item')) updateLivePreview(); });
+  }
+
+  function showDataStatus() {
+    const i = state.serverInfo || {};
+    const rows = [
+      ['Runtime', 'Static GitHub Pages / browser-only'],
+      ['Lookup bundle', i.data_file || 'data/thermaspace-db.js'],
+      ['Database version', state.db?.version || '—'],
+      ['Source workbook', 'data/source/ThermaSpace_CLTD_Database.xlsx'],
+      ['Repository', 'https://github.com/susara20010420/ThermaSpace'],
+      ['Authentication', 'None required for public calculations']
+    ];
+    $('#configDetails').innerHTML = rows.map(([k,v]) => `<div class="config-row"><b>${escapeHtml(k)}</b><code>${escapeHtml(v)}</code></div>`).join('');
+  }
+
+  function setDbStatus(ok, msg) {
+    const el = $('#dbStatus');
+    el.className = `status-pill ${ok ? 'good' : 'neutral'}`;
+    el.innerHTML = `<i></i>${escapeHtml(msg)}`;
+    $('#lookupBadge').textContent = ok ? 'Repository lookup active' : 'Waiting for database';
+    $('#lookupBadge').classList.toggle('success', ok);
+  }
+
+  async function loadDatabase(showToast = false) {
+    setDbStatus(false, 'Loading lookup tables…');
+    try {
+      const result = window.THERMASPACE_DB;
+      if (!result || !result.sheets) {
+        throw new Error('Bundled lookup database was not loaded. Check data/thermaspace-db.js.');
+      }
+      validateDb(result.sheets);
+      state.db = normalizeDb(result.sheets);
+      state.serverInfo = {
+        data_file: 'data/thermaspace-db.js',
+        json_file: 'data/thermaspace-db.json',
+        source_file: 'data/source/ThermaSpace_CLTD_Database.xlsx'
+      };
+      state.databaseLoaded = true;
+      setDbStatus(true, `Database loaded (${state.db.version})`);
+      fillDriveOptions();
+      updateLivePreview();
+      showDataStatus();
+      if (showToast) toast('CLTD/SCL/CLF lookup tables reloaded from the GitHub repository bundle.');
+    } catch (err) {
+      state.databaseLoaded = false;
+      setDbStatus(false, 'Database unavailable');
+      console.error(err);
+      toast(`Database load failed: ${friendlyError(err)}`, 6000);
+    }
+  }
+
+  function tableRows(values) {
+    if (!values.length) return [];
+    const headers = values[0].map(h => String(h).trim());
+    return values.slice(1).filter(r => r.some(v => String(v ?? '').trim() !== '')).map(row => {
+      const o = {};
+      headers.forEach((h, i) => o[h] = row[i] ?? '');
+      return o;
+    });
+  }
+
+  function validateDb(t) {
+    const required = ['Config','Roof_Types','Roof_CLTD','Wall_Types','Wall_CLTD','Glass_CLTD','SCL','CLF_Occupancy','CLF_Lighting'];
+    const missing = required.filter(s => !t[s]);
+    if (missing.length) throw new Error(`Database tabs missing: ${missing.join(', ')}`);
+    if (!t.Roof_CLTD.length || !t.Wall_CLTD.length || !t.SCL.length) throw new Error('Database lookup tables are empty.');
+  }
+
+  function normalizeDb(t) {
+    const cfg = Object.fromEntries(t.Config.map(r => [String(r.key || '').trim(), r.value]));
+    const roofTypes = t.Roof_Types.map(r => ({
+      code: String(r.roof_type_code || '').trim(),
+      name: String(r.roof_type_name || '').trim(),
+      defaultU: toNullableNumber(r.default_u_w_m2k),
+      notes: String(r.notes || '').trim()
+    })).filter(r => r.code);
+    const roofCLTD = new Map();
+    t.Roof_CLTD.forEach(r => roofCLTD.set(`${String(r.roof_type_code).trim()}|${Number(r.hour)}`, Number(r.cltd_k)));
+    const wallTypes = t.Wall_Types.map(r => ({
+      code: String(r.wall_type_code || '').trim(),
+      name: String(r.wall_type_name || '').trim(),
+      profile: String(r.profile_code || '').trim(),
+      defaultU: toNullableNumber(r.default_u_w_m2k),
+      notes: String(r.notes || '').trim()
+    })).filter(r => r.code && r.profile);
+    const wallCLTD = new Map();
+    t.Wall_CLTD.forEach(r => wallCLTD.set(`${String(r.profile_code).trim()}|${String(r.orientation).trim().toUpperCase()}|${Number(r.hour)}`, Number(r.cltd_k)));
+    const glassCLTD = new Map();
+    t.Glass_CLTD.forEach(r => glassCLTD.set(Number(r.hour), Number(r.cltd_k)));
+    const scl = new Map();
+    t.SCL.forEach(r => scl.set(`${String(r.orientation).trim().toUpperCase()}|${Number(r.hour)}`, Number(r.scl_w_m2)));
+    const occ = new Map();
+    t.CLF_Occupancy.forEach(r => occ.set(`${String(r.building_type).trim().toLowerCase()}|${Number(r.hour)}`, Number(r.clf)));
+    const light = new Map();
+    t.CLF_Lighting.forEach(r => light.set(`${String(r.building_type).trim().toLowerCase()}|${Number(r.hour)}`, Number(r.clf)));
+    return {
+      version: String(cfg.database_version || cfg.version || 'unknown'),
+      baselineCorrection: Number(cfg.baseline_cltd_correction_k ?? 1.1),
+      config: cfg, roofTypes, roofCLTD, wallTypes, wallCLTD, glassCLTD, scl,
+      clf: { occupancy: occ, lighting: light }
+    };
+  }
+  function toNullableNumber(v) {
+    if (v === '' || v == null) return null;
+    const n = Number(v);
+    return Number.isFinite(n) ? n : null;
+  }
+
+  function fillDriveOptions() {
+    const roof = $('#roofType');
+    roof.innerHTML = state.db.roofTypes.map(r => `<option value="${escapeHtml(r.code)}">${escapeHtml(r.code)} — ${escapeHtml(r.name)}</option>`).join('');
+    $$('.wall-type').forEach(fillWallTypeSelect);
+    syncPresetUValues();
+  }
+  function fillWallTypeSelect(sel) {
+    const current = sel.value;
+    sel.innerHTML = state.db?.wallTypes?.map(r => `<option value="${escapeHtml(r.code)}">${escapeHtml(r.code)} — ${escapeHtml(r.name)}</option>`).join('') || '<option>Loading lookup tables…</option>';
+    if ([...sel.options].some(o => o.value === current)) sel.value = current;
+  }
+  function syncPresetUValues() {
+    if (!state.db) return;
+    const roofType = state.db.roofTypes.find(r => r.code === $('#roofType').value);
+    if (roofType?.defaultU != null) $('#roofU').value = roofType.defaultU;
+    $$('.wall-item').forEach(item => {
+      const type = state.db.wallTypes.find(r => r.code === $('.wall-type', item).value);
+      if (type?.defaultU != null) $('.wall-u', item).value = type.defaultU;
+      $('.wall-source', item).textContent = `Lookup profile: ${type?.profile || '—'}`;
+    });
+  }
+
+  function addWall() {
+    const frag = $('#wallTemplate').content.cloneNode(true);
+    const item = $('.wall-item', frag);
+    $('#walls').appendChild(frag);
+    const actual = $('#walls').lastElementChild;
+    fillWallTypeSelect($('.wall-type', actual));
+    $('.wall-type', actual).addEventListener('change', () => { syncPresetUValues(); updateLivePreview(); });
+    $('.remove-item', actual).addEventListener('click', () => { actual.remove(); renumber('.wall-item'); updateLivePreview(); });
+    renumber('.wall-item');
+    syncPresetUValues();
+    updateLivePreview();
+  }
+  function addWindow() {
+    const frag = $('#windowTemplate').content.cloneNode(true);
+    $('#windows').appendChild(frag);
+    const actual = $('#windows').lastElementChild;
+    $('.remove-item', actual).addEventListener('click', () => { actual.remove(); renumber('.window-item'); updateLivePreview(); });
+    renumber('.window-item');
+    updateLivePreview();
+  }
+  function createAdjacentSurface(name) {
+    const frag = $('#adjacentTemplate').content.cloneNode(true);
+    $('.adjacent-name', frag).textContent = name;
+    $('#adjacentLoads').appendChild(frag);
+  }
+  function addEquipment(name = 'Equipment', sensible = 500, latent = 0) {
+    const frag = $('#equipmentTemplate').content.cloneNode(true);
+    $('#equipment').appendChild(frag);
+    const actual = $('#equipment').lastElementChild;
+    $('.equip-name', actual).value = name;
+    $('.equip-sensible', actual).value = sensible;
+    $('.equip-latent', actual).value = latent;
+    $('.remove-item', actual).addEventListener('click', () => { actual.remove(); renumber('.equipment-item'); updateLivePreview(); });
+    renumber('.equipment-item');
+    updateLivePreview();
+  }
+  function renumber(selector) { $$(selector).forEach((item, i) => $('.item-number', item).textContent = i + 1); }
+
+  function syncAirTemperatures() {
+    const out = num('#outdoorDb', 33), indoor = num('#indoorDb', 24);
+    ['#infOutC','#ventOutC'].forEach(s => { const e=$(s); if (e) e.value=out; });
+    ['#infInC','#ventInC'].forEach(s => { const e=$(s); if (e) e.value=indoor; });
+    $$('.adj-in').forEach(e => e.value = indoor);
+    updateLivePreview();
+  }
+
+  function getDesignCorrection() {
+    if (!$('#applyCltdCorrection').checked || !state.db) return 0;
+    const tr = num('#indoorDb', 24);
+    const tmax = num('#outdoorDb', 33);
+    const dr = num('#dailyRange', 8);
+    const tm = tmax - dr / 2;
+    const newCorrection = (25.5 - tr) + (tm - 29.4);
+    return newCorrection - state.db.baselineCorrection;
+  }
+
+  function lookupRoof(type, hour) {
+    return state.db?.roofCLTD.get(`${type}|${hour}`);
+  }
+  function lookupWall(typeCode, orientation, hour) {
+    const t = state.db?.wallTypes.find(x => x.code === typeCode);
+    if (!t) return undefined;
+    return state.db.wallCLTD.get(`${t.profile}|${orientation}|${hour}`);
+  }
+  function lookupScl(orientation, hour) { return state.db?.scl.get(`${orientation}|${hour}`); }
+  function lookupGlass(hour) { return state.db?.glassCLTD.get(hour); }
+  function lookupClf(kind, buildingType, hour) {
+    if (buildingType === 'custom') return 1;
+    return state.db?.clf?.[kind]?.get(`${buildingType}|${hour}`) ?? 1;
+  }
+
+  function updateLivePreview() {
+    const hour = num('#designHour', 15);
+    const c = calculateHour(hour, { allowUnloaded: true });
+    const roofArea = clamp0(num('#roofLength')) * clamp0(num('#roofWidth'));
+    $('#roofAreaOut').textContent = `${fmt(roofArea,2)} m²`;
+    $('#roofCltdOut').textContent = c?.detail?.roof?.cltd != null ? `${fmt(c.detail.roof.cltd,2)} K` : '—';
+    $('#roofLoadOut').textContent = c?.detail?.roof?.load != null ? kw(c.detail.roof.load) : '—';
+    if (!c) return;
+
+    c.detail.walls.forEach((r, i) => {
+      const item = $$('.wall-item')[i]; if (!item) return;
+      $('.wall-area-out', item).textContent = `${fmt(r.area,2)} m²`;
+      $('.wall-cltd-out', item).textContent = r.cltd == null ? '—' : `${fmt(r.cltd,2)} K`;
+      $('.wall-load-out', item).textContent = kw(r.load);
+      const wt = state.db?.wallTypes.find(x => x.code === r.type);
+      $('.wall-source', item).textContent = `Lookup profile: ${wt?.profile || '—'}`;
+    });
+    c.detail.windows.forEach((r, i) => {
+      const item = $$('.window-item')[i]; if (!item) return;
+      $('.window-cltd-out', item).textContent = r.cltd == null ? '—' : `${fmt(r.cltd,2)} K`;
+      $('.window-scl-out', item).textContent = r.scl == null ? '—' : `${fmt(r.scl,1)} W/m²`;
+      $('.window-cond-out', item).textContent = kw(r.conduction);
+      $('.window-solar-out', item).textContent = kw(r.solar);
+    });
+    c.detail.adjacent.forEach((r, i) => { const item = $$('.adjacent-item')[i]; if (item) $('.adj-load-out', item).textContent = kw(r.load); });
+    $('#lightLoadOut').textContent = kw(c.components.lighting);
+    $('#peopleSensibleOut').textContent = kw(c.components.peopleSensible);
+    $('#peopleLatentOut').textContent = kw(c.components.peopleLatent);
+    c.detail.equipment.forEach((r,i)=>{const item=$$('.equipment-item')[i]; if(item){$('.equip-sens-out',item).textContent=kw(r.sensible);$('.equip-lat-out',item).textContent=kw(r.latent);}});
+    $('#infSensOut').textContent = kw(c.components.infiltrationSensible);
+    $('#infLatOut').textContent = kw(c.components.infiltrationLatent);
+    $('#ventSensOut').textContent = kw(c.components.ventilationSensible);
+    $('#ventLatOut').textContent = kw(c.components.ventilationLatent);
+  }
+
+  function calculateHour(hour, { allowUnloaded = false } = {}) {
+    if (!state.databaseLoaded) {
+      if (!allowUnloaded) toast('Wait for the lookup database to load first.');
+      return null;
+    }
+    const correction = getDesignCorrection();
+    const buildingType = text('#buildingType','office');
+
+    const roofType = text('#roofType');
+    const roofBaseCltd = lookupRoof(roofType, hour);
+    const roofCltd = Number.isFinite(roofBaseCltd) ? roofBaseCltd + correction : null;
+    const roofArea = clamp0(num('#roofLength')) * clamp0(num('#roofWidth'));
+    const roofLoad = roofCltd == null ? 0 : clamp0(num('#roofU')) * roofArea * roofCltd;
+
+    const wallDetails = $$('.wall-item').map(item => {
+      const type = text($('.wall-type', item));
+      const orientation = text($('.wall-orientation', item), 'N');
+      const area = Math.max(0, clamp0(num($('.wall-length', item))) * clamp0(num($('.wall-height', item))) - clamp0(num($('.wall-openings', item))));
+      const base = lookupWall(type, orientation, hour);
+      const cltd = Number.isFinite(base) ? base + correction : null;
+      const load = cltd == null ? 0 : clamp0(num($('.wall-u', item))) * area * cltd;
+      return { type, orientation, area, cltd, load };
+    });
+    const wallLoad = sum(wallDetails.map(r => r.load));
+
+    const glassBase = lookupGlass(hour);
+    const glassCltd = Number.isFinite(glassBase) ? glassBase + correction : null;
+    const windowDetails = $$('.window-item').map(item => {
+      const orientation = text($('.window-orientation', item), 'N');
+      const area = clamp0(num($('.window-area', item)));
+      const u = clamp0(num($('.window-u', item)));
+      const sc = clamp0(num($('.window-sc', item), 1));
+      const scl = lookupScl(orientation, hour);
+      const conduction = glassCltd == null ? 0 : u * area * glassCltd;
+      const solar = Number.isFinite(scl) ? area * sc * scl : 0;
+      return { label: text($('.window-label', item), 'Glazing'), orientation, area, u, sc, cltd: glassCltd, scl, conduction, solar };
+    });
+    const glassConduction = sum(windowDetails.map(r => r.conduction));
+    const solar = sum(windowDetails.map(r => r.solar));
+
+    const adjacent = $$('.adjacent-item').map(item => {
+      const name = $('.adjacent-name', item).textContent.trim();
+      const load = clamp0(num($('.adj-u', item))) * clamp0(num($('.adj-area', item))) * (num($('.adj-out', item)) - num($('.adj-in', item)));
+      return { name, load };
+    });
+    const adjacentLoad = sum(adjacent.map(r => r.load));
+
+    const lightClf = $('#lightClfMode').value === 'manual' ? clamp0(num('#lightClfManual',1)) : lookupClf('lighting', buildingType, hour);
+    const lighting = clamp0(num('#lightWatts')) * clamp0(num('#lightUse',1)) * clamp0(num('#lightBallast',1)) * lightClf;
+
+    const peopleClf = $('#peopleClfMode').value === 'manual' ? clamp0(num('#peopleClfManual',1)) : lookupClf('occupancy', buildingType, hour);
+    const peopleSensible = clamp0(num('#peopleCount')) * clamp0(num('#peopleSensible')) * peopleClf;
+    const peopleLatent = clamp0(num('#peopleCount')) * clamp0(num('#peopleLatent'));
+
+    const equipment = $$('.equipment-item').map(item => {
+      const mode = text($('.equip-clf-mode', item),'none');
+      let clf = 1;
+      if (mode === 'table') clf = lookupClf('occupancy', buildingType, hour);
+      if (mode === 'manual') clf = clamp0(num($('.equip-clf', item),1));
+      const use = clamp0(num($('.equip-use', item),1));
+      const sensible = clamp0(num($('.equip-sensible', item))) * use * clf;
+      const latent = clamp0(num($('.equip-latent', item))) * use;
+      return { name: text($('.equip-name', item),'Equipment'), sensible, latent, use, clf };
+    });
+    const equipmentSensible = sum(equipment.map(r => r.sensible));
+    const equipmentLatent = sum(equipment.map(r => r.latent));
+
+    const infiltrationSensible = AIR_CP_W_PER_LS_K * clamp0(num('#infiltrationLs')) * (num('#infOutC') - num('#infInC'));
+    const infiltrationLatent = LATENT_W_PER_LS_DW * clamp0(num('#infiltrationLs')) * (num('#outW') - num('#inW'));
+    const ventilationSensible = AIR_CP_W_PER_LS_K * clamp0(num('#ventilationLs')) * (num('#ventOutC') - num('#ventInC'));
+    const ventilationLatent = LATENT_W_PER_LS_DW * clamp0(num('#ventilationLs')) * (num('#ventOutW') - num('#ventInW'));
+    const fanHeat = clamp0(num('#fanKw')) * 1000 * Math.min(1, clamp0(num('#fanHeatFraction',1)));
+    const ductHeat = clamp0(num('#ductHeatW'));
+    const otherSensible = clamp0(num('#otherSensibleW'));
+
+    const envelopeSensible = roofLoad + wallLoad + glassConduction + adjacentLoad;
+    const internalSensible = lighting + peopleSensible + equipmentSensible;
+    const airSensible = infiltrationSensible + ventilationSensible + fanHeat + ductHeat + otherSensible;
+    const latent = Math.max(0, peopleLatent + equipmentLatent + infiltrationLatent + ventilationLatent);
+    const sensibleBeforeAllowance = envelopeSensible + solar + internalSensible + airSensible;
+    const allowanceFactor = 1 + clamp0(num('#allowancePct')) / 100;
+    const sensible = sensibleBeforeAllowance * allowanceFactor;
+    const latentWithAllowance = latent * allowanceFactor;
+    const total = Math.max(0, sensible + latentWithAllowance);
+    const supplyDelta = num('#indoorDb',24) - num('#supplyAirC',14);
+    const supplyAirLs = supplyDelta > 0 ? Math.max(0, sensible / (AIR_CP_W_PER_LS_K * supplyDelta)) : 0;
+    const cop = Math.max(.1, num('#cop',3.2));
+    const electricalKw = total / 1000 / cop;
+
+    return {
+      hour,
+      correction,
+      components: {
+        roof: roofLoad, walls: wallLoad, glassConduction, solar, adjacent: adjacentLoad,
+        lighting, peopleSensible, peopleLatent, equipmentSensible, equipmentLatent,
+        infiltrationSensible, infiltrationLatent: Math.max(0,infiltrationLatent),
+        ventilationSensible, ventilationLatent: Math.max(0,ventilationLatent),
+        fanHeat, ductHeat, otherSensible
+      },
+      groups: { envelope: envelopeSensible, solar, internalSensible, airSensible, latent: latentWithAllowance },
+      sensible, latent: latentWithAllowance, total, electricalKw, supplyAirLs,
+      detail: { roof: { type: roofType, area: roofArea, cltd: roofCltd, load: roofLoad }, walls: wallDetails, windows: windowDetails, adjacent, equipment, lightClf, peopleClf }
+    };
+  }
+
+  function sum(values) { return values.reduce((a,b) => a + (Number(b) || 0), 0); }
+
+  function runAnalysis() {
+    if (!state.databaseLoaded) { toast('The lookup database is not loaded yet. Click Reload lookup tables.'); return false; }
+    const rows = [];
+    for (let h = 1; h <= 24; h++) rows.push(calculateHour(h));
+    if (rows.some(r => !r)) return false;
+    const peak = rows.reduce((a,b) => b.total > a.total ? b : a, rows[0]);
+    state.results = {
+      rows, peak,
+      dailyElectricalKwh: sum(rows.map(r => r.electricalKw)),
+      generatedAt: new Date().toISOString(),
+      inputs: collectInputs()
+    };
+    renderAnalysis();
+    renderFinalResults();
+    toast(`Analysis complete. Peak: ${fmt(peak.total/1000,2)} kW at ${String(peak.hour).padStart(2,'0')}:00.`);
+    return true;
+  }
+
+  function collectInputs() {
+    return {
+      project: {
+        projectName: text('#projectName'), resultFileName: text('#resultFileName'), projectRef: text('#projectRef'), zoneName: text('#zoneName'),
+        location: text('#location'), buildingType: text('#buildingType'), notes: text('#designNotes')
+      },
+      design: {
+        outdoorDbC: num('#outdoorDb'), dailyRangeC: num('#dailyRange'), indoorDbC: num('#indoorDb'), indoorRhPct: num('#indoorRh'),
+        supplyAirC: num('#supplyAirC'), cop: num('#cop'), applyCltdCorrection: $('#applyCltdCorrection').checked,
+        storedBaselineCorrectionK: state.db?.baselineCorrection ?? null, appliedDeltaCorrectionK: getDesignCorrection()
+      },
+      roof: { type: text('#roofType'), uWm2K: num('#roofU'), lengthM: num('#roofLength'), widthM: num('#roofWidth') },
+      walls: $$('.wall-item').map((item,i)=>({index:i+1,type:text($('.wall-type',item)),orientation:text($('.wall-orientation',item)),uWm2K:num($('.wall-u',item)),lengthM:num($('.wall-length',item)),heightM:num($('.wall-height',item)),openingsAreaM2:num($('.wall-openings',item))})),
+      windows: $$('.window-item').map((item,i)=>({index:i+1,label:text($('.window-label',item)),orientation:text($('.window-orientation',item)),areaM2:num($('.window-area',item)),uWm2K:num($('.window-u',item)),shadingCoefficient:num($('.window-sc',item))})),
+      adjacent: $$('.adjacent-item').map(item=>({surface:$('.adjacent-name',item).textContent.trim(),uWm2K:num($('.adj-u',item)),areaM2:num($('.adj-area',item)),adjacentTempC:num($('.adj-out',item)),roomTempC:num($('.adj-in',item))})),
+      internal: {
+        lighting:{watts:num('#lightWatts'),useFactor:num('#lightUse'),ballastFactor:num('#lightBallast'),clfMode:text('#lightClfMode'),manualClf:num('#lightClfManual')},
+        people:{count:num('#peopleCount'),sensibleWPerPerson:num('#peopleSensible'),latentWPerPerson:num('#peopleLatent'),clfMode:text('#peopleClfMode'),manualClf:num('#peopleClfManual')},
+        equipment: $$('.equipment-item').map((item,i)=>({index:i+1,name:text($('.equip-name',item)),sensibleW:num($('.equip-sensible',item)),latentW:num($('.equip-latent',item)),useFactor:num($('.equip-use',item)),clfMode:text($('.equip-clf-mode',item)),manualClf:num($('.equip-clf',item))}))
+      },
+      air: {
+        infiltration:{ls:num('#infiltrationLs'),outC:num('#infOutC'),inC:num('#infInC'),outW:num('#outW'),inW:num('#inW')},
+        ventilation:{ls:num('#ventilationLs'),outC:num('#ventOutC'),inC:num('#ventInC'),outW:num('#ventOutW'),inW:num('#ventInW')},
+        fanKw:num('#fanKw'),fanHeatFraction:num('#fanHeatFraction'),ductHeatW:num('#ductHeatW'),otherSensibleW:num('#otherSensibleW'),allowancePct:num('#allowancePct')
+      }
+    };
+  }
+
+  function renderAnalysis() {
+    const { rows, peak, dailyElectricalKwh } = state.results;
+    $('#analysisPeakKw').textContent = fmt(peak.total/1000,2);
+    $('#analysisPeakHour').textContent = `${String(peak.hour).padStart(2,'0')}:00`;
+    $('#analysisPeakSensible').textContent = fmt(peak.sensible/1000,2);
+    $('#analysisDailyKwh').textContent = fmt(dailyElectricalKwh,1);
+    const tbody = $('#hourlyTable tbody');
+    tbody.innerHTML = rows.map(r => `<tr class="${r.hour===peak.hour?'peak-row':''}"><td>${String(r.hour).padStart(2,'0')}:00</td><td>${fmt(r.groups.envelope/1000,3)}</td><td>${fmt(r.groups.solar/1000,3)}</td><td>${fmt(r.groups.internalSensible/1000,3)}</td><td>${fmt(r.groups.airSensible/1000,3)}</td><td>${fmt(r.latent/1000,3)}</td><td>${fmt(r.total/1000,3)}</td><td>${fmt(r.electricalKw,3)}</td></tr>`).join('');
+    drawChart(rows);
+  }
+
+  function drawChart(rows) {
+    const canvas = $('#loadChart');
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    const cssW = Math.max(700, rect.width || 1000), cssH = 340;
+    canvas.width = cssW * dpr; canvas.height = cssH * dpr; canvas.style.height = `${cssH}px`;
+    const ctx = canvas.getContext('2d'); ctx.scale(dpr,dpr);
+    ctx.clearRect(0,0,cssW,cssH);
+    const pad = {l:52,r:18,t:18,b:38};
+    const w=cssW-pad.l-pad.r,h=cssH-pad.t-pad.b;
+    const maxY=Math.max(1,...rows.flatMap(r=>[r.total,r.sensible,r.groups.solar]))/1000*1.12;
+    ctx.font='11px system-ui'; ctx.fillStyle='#71848b'; ctx.strokeStyle='#e3ecea'; ctx.lineWidth=1;
+    for(let i=0;i<=5;i++){const y=pad.t+h-(h*i/5);ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(cssW-pad.r,y);ctx.stroke();ctx.fillText(`${fmt(maxY*i/5,1)} kW`,6,y+4)}
+    [1,4,7,10,13,16,19,22,24].forEach(hr=>{const x=pad.l+w*((hr-1)/23);ctx.fillText(String(hr).padStart(2,'0'),x-7,cssH-13)});
+    const series=[
+      {get:r=>r.total/1000,color:'#138a7b',width:3},
+      {get:r=>r.sensible/1000,color:'#3b82f6',width:2},
+      {get:r=>r.groups.solar/1000,color:'#f59e0b',width:2}
+    ];
+    series.forEach(s=>{ctx.beginPath();ctx.strokeStyle=s.color;ctx.lineWidth=s.width;rows.forEach((r,i)=>{const x=pad.l+w*(i/23), y=pad.t+h-h*(s.get(r)/maxY);if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)});ctx.stroke()});
+  }
+
+  function renderFinalResults() {
+    if (!state.results) return;
+    const p = state.results.peak;
+    $('#resultPeakKw').textContent = fmt(p.total/1000,2);
+    $('#resultTR').textContent = fmt(p.total/W_PER_TR,2);
+    $('#resultBtuh').textContent = fmt(p.total*W_TO_BTUH,0);
+    $('#resultAirflow').textContent = fmt(p.supplyAirLs,0);
+    $('#saveResultName').value = text('#resultFileName') || text('#projectName') || 'ThermaSpace Cooling Load Result';
+    const rows = [
+      ['Roof',p.components.roof],['Walls',p.components.walls],['Glass conduction',p.components.glassConduction],['Window solar',p.components.solar],['Adjacent surfaces',p.components.adjacent],
+      ['Lighting',p.components.lighting],['People sensible',p.components.peopleSensible],['Equipment sensible',p.components.equipmentSensible],['Outdoor-air sensible',p.components.infiltrationSensible+p.components.ventilationSensible],
+      ['Fan / duct / other',p.components.fanHeat+p.components.ductHeat+p.components.otherSensible],['Latent load',p.latent]
+    ];
+    const max = Math.max(1,...rows.map(x=>Math.abs(x[1])));
+    $('#breakdownBars').innerHTML = rows.map(([name,val])=>`<div class="breakdown-row"><span>${escapeHtml(name)}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.min(100,Math.abs(val)/max*100)}%"></div></div><b>${fmt(val/1000,2)} kW</b></div>`).join('');
+  }
+
+  function downloadHourlyCsv() {
+    if (!state.results) return toast('Run the analysis first.');
+    const rows = [['Hour','Envelope_kW','Solar_kW','Internal_Sensible_kW','Air_Sensible_kW','Latent_kW','Total_kW','Electrical_kW']];
+    state.results.rows.forEach(r => rows.push([r.hour,r.groups.envelope/1000,r.groups.solar/1000,r.groups.internalSensible/1000,r.groups.airSensible/1000,r.latent/1000,r.total/1000,r.electricalKw]));
+    const csv = rows.map(r=>r.map(csvCell).join(',')).join('\n');
+    const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download=`${safeFile(text('#projectName'))}_24h.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+  }
+  function csvCell(v){const s=String(v??'');return /[",\n]/.test(s)?`"${s.replace(/"/g,'""')}"`:s;}
+  function safeFile(s){return String(s||'ThermaSpace').replace(/[\\/:*?"<>|]+/g,'_').trim().slice(0,100)}
+
+
+  function flattenObject(obj, prefix = '', out = []) {
+    if (obj == null) return out;
+    if (Array.isArray(obj)) {
+      obj.forEach((v, i) => flattenObject(v, `${prefix}[${i + 1}]`, out));
+    } else if (typeof obj === 'object') {
+      Object.entries(obj).forEach(([k, v]) => {
+        const p = prefix ? `${prefix}.${k}` : k;
+        if (v && typeof v === 'object') flattenObject(v, p, out);
+        else out.push([p, v]);
+      });
+    } else {
+      out.push([prefix, obj]);
+    }
+    return out;
+  }
+
+  function downloadResultWorkbook() {
+    if (!state.results) return toast('Run the 24-hour analysis first.');
+
+    const title = text('#saveResultName') || `${text('#projectName','ThermaSpace')} Result`;
+    const filename = `${safeFile(title)}.xlsx`;
+    const p = state.results.peak;
+
+    if (!window.XLSX) {
+      toast('Excel library did not load. Downloading the hourly CSV instead.', 6000);
+      downloadHourlyCsv();
+      return;
+    }
+
+    const wb = XLSX.utils.book_new();
+
+    const summary = [
+      ['ThermaSpace Cooling Load Result', ''],
+      ['Project', text('#projectName')],
+      ['Reference', text('#projectRef')],
+      ['Zone / room', text('#zoneName')],
+      ['Location', text('#location')],
+      ['Building type', text('#buildingType')],
+      ['Generated at', state.results.generatedAt],
+      ['Peak hour', `${String(p.hour).padStart(2,'0')}:00`],
+      ['Peak total cooling load (kW)', p.total / 1000],
+      ['Peak sensible load (kW)', p.sensible / 1000],
+      ['Peak latent load (kW)', p.latent / 1000],
+      ['Refrigeration tons (TR)', p.total / W_PER_TR],
+      ['Equivalent capacity (Btu/h)', p.total * W_TO_BTUH],
+      ['Supply airflow (L/s)', p.supplyAirLs],
+      ['Estimated daily electrical energy (kWh)', state.results.dailyElectricalKwh],
+      ['Lookup database version', state.db?.version || 'unknown'],
+      ['Lookup source', 'GitHub repository data/thermaspace-db.js']
+    ];
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(summary), 'Summary');
+
+    const inputRows = [['Input path', 'Value'], ...flattenObject(state.results.inputs)];
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(inputRows), 'Inputs');
+
+    const hourly = [[
+      'Hour','Envelope_kW','Solar_kW','Internal_Sensible_kW','Air_Sensible_kW',
+      'Sensible_kW','Latent_kW','Total_kW','Electrical_kW','Supply_Air_L_s'
+    ]];
+    state.results.rows.forEach(r => hourly.push([
+      r.hour,
+      r.groups.envelope / 1000,
+      r.groups.solar / 1000,
+      r.groups.internalSensible / 1000,
+      r.groups.airSensible / 1000,
+      r.sensible / 1000,
+      r.latent / 1000,
+      r.total / 1000,
+      r.electricalKw,
+      r.supplyAirLs
+    ]));
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(hourly), 'Hourly_Results');
+
+    const breakdown = [
+      ['Component','Peak load kW'],
+      ['Roof',p.components.roof/1000],
+      ['Walls',p.components.walls/1000],
+      ['Glass conduction',p.components.glassConduction/1000],
+      ['Window solar',p.components.solar/1000],
+      ['Adjacent surfaces',p.components.adjacent/1000],
+      ['Lighting',p.components.lighting/1000],
+      ['People sensible',p.components.peopleSensible/1000],
+      ['People latent',p.components.peopleLatent/1000],
+      ['Equipment sensible',p.components.equipmentSensible/1000],
+      ['Equipment latent',p.components.equipmentLatent/1000],
+      ['Infiltration sensible',p.components.infiltrationSensible/1000],
+      ['Infiltration latent',p.components.infiltrationLatent/1000],
+      ['Ventilation sensible',p.components.ventilationSensible/1000],
+      ['Ventilation latent',p.components.ventilationLatent/1000],
+      ['Fan heat',p.components.fanHeat/1000],
+      ['Duct heat',p.components.ductHeat/1000],
+      ['Other sensible',p.components.otherSensible/1000]
+    ];
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(breakdown), 'Peak_Breakdown');
+
+    const source = [
+      ['Field','Value'],
+      ['Method','CLTD / SCL / CLF'],
+      ['Database version',state.db?.version || 'unknown'],
+      ['Repository','https://github.com/susara20010420/ThermaSpace'],
+      ['Runtime lookup file','data/thermaspace-db.js'],
+      ['JSON copy','data/thermaspace-db.json'],
+      ['Source workbook','data/source/ThermaSpace_CLTD_Database.xlsx'],
+      ['Note','West-wall hour-19 source value is preserved as supplied and should be verified before final engineering validation.']
+    ];
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(source), 'Data_Source');
+
+    XLSX.writeFile(wb, filename);
+    $('#saveResultStatus').className = 'save-status success';
+    $('#saveResultStatus').innerHTML = `Downloaded <b>${escapeHtml(filename)}</b><br><small>Upload or save this workbook to Google Drive if required.</small>`;
+    recordRecentExport(filename);
+    toast('Result Excel workbook downloaded.');
+  }
+
+  function recentExports() {
+    try { return JSON.parse(localStorage.getItem('thermaspaceRecentExports') || '[]'); }
+    catch { return []; }
+  }
+
+  function recordRecentExport(filename) {
+    const rows = recentExports();
+    rows.unshift({ filename, at: new Date().toISOString() });
+    localStorage.setItem('thermaspaceRecentExports', JSON.stringify(rows.slice(0, 10)));
+    renderRecentExports();
+  }
+
+  function renderRecentExports() {
+    const rows = recentExports();
+    $('#savedResults').innerHTML = rows.length
+      ? rows.map(r => `<div class="saved-file"><div><span>${escapeHtml(r.filename)}</span><small>${escapeHtml(new Date(r.at).toLocaleString())}</small></div><b>✓</b></div>`).join('')
+      : '<p class="muted">No exported workbooks yet.</p>';
+  }
+
+  function clearRecentExports() {
+    localStorage.removeItem('thermaspaceRecentExports');
+    renderRecentExports();
+    toast('Recent export history cleared.');
+  }
+
+  function friendlyError(err) {
+    return String(err?.message || err || 'Unknown error').slice(0, 400);
+  }
+
+  window.addEventListener('resize', () => { if (state.results && state.currentStep === 5) drawChart(state.results.rows); });
+  window.addEventListener('DOMContentLoaded', init);
+})();
+
+</script>
+
+</body>
+</html>
