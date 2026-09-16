@@ -1,0 +1,2 @@
+﻿wall_type_code,wall_type_name,profile_code,default_u_w_m2k,notes
+SL-WALL-DEFAULT,Sri Lanka adjusted external wall profile (provided table),SL-8N-DEFAULT,,Use the actual wall U-value in the website. Add extra rows/profiles only when source values have been digitized and verified.

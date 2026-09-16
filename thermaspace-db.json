@@ -1,0 +1,4487 @@
+{
+  "meta": {
+    "name": "ThermaSpace CLTD Database",
+    "generated_from": "data/tables/*.csv",
+    "basis": "User-supplied Sri Lanka adjusted CLTD/SCL/CLF tables",
+    "warning": "West wall hour 19 value is preserved exactly as supplied and should be verified."
+  },
+  "sheets": {
+    "Config": [
+      {
+        "key": "database_version",
+        "value": "2026-09-16-drive-v1"
+      },
+      {
+        "key": "method",
+        "value": "CLTD / SCL / CLF"
+      },
+      {
+        "key": "location_basis",
+        "value": "Colombo, Sri Lanka / Latitude 8N adjusted notes"
+      },
+      {
+        "key": "baseline_outdoor_db_c",
+        "value": 33
+      },
+      {
+        "key": "baseline_daily_range_c",
+        "value": 8
+      },
+      {
+        "key": "baseline_indoor_db_c",
+        "value": 24
+      },
+      {
+        "key": "baseline_mean_outdoor_c",
+        "value": 29
+      },
+      {
+        "key": "baseline_cltd_correction_k",
+        "value": 1.1
+      },
+      {
+        "key": "website_note",
+        "value": "CLTD = stored CLTD + (new design correction - 1.1 K baseline correction)."
+      }
+    ],
+    "Roof_Types": [
+      {
+        "roof_type_code": "R1",
+        "roof_type_name": "Pitched roof without suspended ceiling",
+        "default_u_w_m2k": "",
+        "notes": "Supplied Sri Lanka adjusted roof type 1"
+      },
+      {
+        "roof_type_code": "R2",
+        "roof_type_name": "Pitched roof with suspended ceiling",
+        "default_u_w_m2k": "",
+        "notes": "Supplied Sri Lanka adjusted roof type 2"
+      },
+      {
+        "roof_type_code": "R3",
+        "roof_type_name": "Concrete slab with cover & suspended ceiling",
+        "default_u_w_m2k": "",
+        "notes": "Supplied Sri Lanka adjusted roof type 3"
+      },
+      {
+        "roof_type_code": "R4",
+        "roof_type_name": "Concrete slab & attic ventilation with good insulation & suspended ceiling",
+        "default_u_w_m2k": "",
+        "notes": "Supplied Sri Lanka adjusted roof type 4"
+      }
+    ],
+    "Roof_CLTD": [
+      {
+        "roof_type_code": "R1",
+        "hour": 1,
+        "cltd_k": 1.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 2,
+        "cltd_k": 0.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 3,
+        "cltd_k": -0.9,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 4,
+        "cltd_k": -1.9,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 5,
+        "cltd_k": -1.9,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 6,
+        "cltd_k": -1.9,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 7,
+        "cltd_k": 1.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 8,
+        "cltd_k": 8.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 9,
+        "cltd_k": 17.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 10,
+        "cltd_k": 26.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 11,
+        "cltd_k": 34.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 12,
+        "cltd_k": 42.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 13,
+        "cltd_k": 47.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 14,
+        "cltd_k": 50.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 15,
+        "cltd_k": 50.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 16,
+        "cltd_k": 47.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 17,
+        "cltd_k": 42.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 18,
+        "cltd_k": 34.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 19,
+        "cltd_k": 25.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 20,
+        "cltd_k": 15.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 21,
+        "cltd_k": 9.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 22,
+        "cltd_k": 6.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 23,
+        "cltd_k": 4.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R1",
+        "hour": 24,
+        "cltd_k": 2.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 1,
+        "cltd_k": 2.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 2,
+        "cltd_k": 1.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 3,
+        "cltd_k": 0.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 4,
+        "cltd_k": -0.9,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 5,
+        "cltd_k": -1.9,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 6,
+        "cltd_k": -1.9,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 7,
+        "cltd_k": -0.9,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 8,
+        "cltd_k": 3.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 9,
+        "cltd_k": 10.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 10,
+        "cltd_k": 19.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 11,
+        "cltd_k": 28.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 12,
+        "cltd_k": 35.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 13,
+        "cltd_k": 42.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 14,
+        "cltd_k": 47.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 15,
+        "cltd_k": 49.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 16,
+        "cltd_k": 48.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 17,
+        "cltd_k": 45.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 18,
+        "cltd_k": 40.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 19,
+        "cltd_k": 32.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 20,
+        "cltd_k": 23.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 21,
+        "cltd_k": 15.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 22,
+        "cltd_k": 9.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 23,
+        "cltd_k": 6.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R2",
+        "hour": 24,
+        "cltd_k": 4.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 1,
+        "cltd_k": 8.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 2,
+        "cltd_k": 5.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 3,
+        "cltd_k": 4.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 4,
+        "cltd_k": 2.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 5,
+        "cltd_k": 1.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 6,
+        "cltd_k": 0.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 7,
+        "cltd_k": 1.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 8,
+        "cltd_k": 4.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 9,
+        "cltd_k": 8.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 10,
+        "cltd_k": 14.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 11,
+        "cltd_k": 20.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 12,
+        "cltd_k": 27.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 13,
+        "cltd_k": 33.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 14,
+        "cltd_k": 38.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 15,
+        "cltd_k": 41.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 16,
+        "cltd_k": 42.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 17,
+        "cltd_k": 42.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 18,
+        "cltd_k": 38.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 19,
+        "cltd_k": 34.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 20,
+        "cltd_k": 28.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 21,
+        "cltd_k": 22.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 22,
+        "cltd_k": 18.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 23,
+        "cltd_k": 14.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R3",
+        "hour": 24,
+        "cltd_k": 10.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 1,
+        "cltd_k": 10.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 2,
+        "cltd_k": 7.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 3,
+        "cltd_k": 5.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 4,
+        "cltd_k": 3.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 5,
+        "cltd_k": 2.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 6,
+        "cltd_k": 0.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 7,
+        "cltd_k": -0.9,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 8,
+        "cltd_k": -0.9,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 9,
+        "cltd_k": 1.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 10,
+        "cltd_k": 5.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 11,
+        "cltd_k": 10.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 12,
+        "cltd_k": 17.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 13,
+        "cltd_k": 24.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 14,
+        "cltd_k": 31.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 15,
+        "cltd_k": 37.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 16,
+        "cltd_k": 42.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 17,
+        "cltd_k": 44.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 18,
+        "cltd_k": 44.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 19,
+        "cltd_k": 42.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 20,
+        "cltd_k": 38.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 21,
+        "cltd_k": 32.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 22,
+        "cltd_k": 26.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 23,
+        "cltd_k": 20.1,
+        "source": "Sri Lanka adjusted note p.1"
+      },
+      {
+        "roof_type_code": "R4",
+        "hour": 24,
+        "cltd_k": 14.1,
+        "source": "Sri Lanka adjusted note p.1"
+      }
+    ],
+    "Wall_Types": [
+      {
+        "wall_type_code": "SL-WALL-DEFAULT",
+        "wall_type_name": "Sri Lanka adjusted external wall profile (provided table)",
+        "profile_code": "SL-8N-DEFAULT",
+        "default_u_w_m2k": "",
+        "notes": "Use the actual wall U-value in the website. Add extra rows/profiles only when source values have been digitized and verified."
+      }
+    ],
+    "Wall_CLTD": [
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 1,
+        "cltd_k": 12.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 2,
+        "cltd_k": 10.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 3,
+        "cltd_k": 9.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 4,
+        "cltd_k": 8.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 5,
+        "cltd_k": 7.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 6,
+        "cltd_k": 6.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 7,
+        "cltd_k": 6.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 8,
+        "cltd_k": 7.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 9,
+        "cltd_k": 8.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 10,
+        "cltd_k": 9.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 11,
+        "cltd_k": 10.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 12,
+        "cltd_k": 12.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 13,
+        "cltd_k": 13.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 14,
+        "cltd_k": 15.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 15,
+        "cltd_k": 17.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 16,
+        "cltd_k": 18.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 17,
+        "cltd_k": 19.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 18,
+        "cltd_k": 20.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 19,
+        "cltd_k": 21.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 20,
+        "cltd_k": 21.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 21,
+        "cltd_k": 20.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 22,
+        "cltd_k": 18.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 23,
+        "cltd_k": 17.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "N",
+        "hour": 24,
+        "cltd_k": 14.1,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 1,
+        "cltd_k": 9.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 2,
+        "cltd_k": 7.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 3,
+        "cltd_k": 6.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 4,
+        "cltd_k": 5.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 5,
+        "cltd_k": 4.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 6,
+        "cltd_k": 3.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 7,
+        "cltd_k": 3.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 8,
+        "cltd_k": 5.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 9,
+        "cltd_k": 10.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 10,
+        "cltd_k": 15.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 11,
+        "cltd_k": 19.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 12,
+        "cltd_k": 21.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 13,
+        "cltd_k": 21.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 14,
+        "cltd_k": 21.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 15,
+        "cltd_k": 20.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 16,
+        "cltd_k": 20.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 17,
+        "cltd_k": 20.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 18,
+        "cltd_k": 19.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 19,
+        "cltd_k": 19.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 20,
+        "cltd_k": 17.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 21,
+        "cltd_k": 16.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 22,
+        "cltd_k": 14.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 23,
+        "cltd_k": 12.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NE",
+        "hour": 24,
+        "cltd_k": 10.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 1,
+        "cltd_k": 5.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 2,
+        "cltd_k": 3.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 3,
+        "cltd_k": 2.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 4,
+        "cltd_k": 1.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 5,
+        "cltd_k": 0.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 6,
+        "cltd_k": 0.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 7,
+        "cltd_k": 0.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 8,
+        "cltd_k": 2.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 9,
+        "cltd_k": 7.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 10,
+        "cltd_k": 14.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 11,
+        "cltd_k": 20.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 12,
+        "cltd_k": 24.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 13,
+        "cltd_k": 26.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 14,
+        "cltd_k": 25.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 15,
+        "cltd_k": 23.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 16,
+        "cltd_k": 21.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 17,
+        "cltd_k": 20.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 18,
+        "cltd_k": 18.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 19,
+        "cltd_k": 17.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 20,
+        "cltd_k": 15.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 21,
+        "cltd_k": 13.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 22,
+        "cltd_k": 11.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 23,
+        "cltd_k": 8.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "E",
+        "hour": 24,
+        "cltd_k": 7.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 1,
+        "cltd_k": 2.655556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 2,
+        "cltd_k": 0.655556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 3,
+        "cltd_k": -0.34444,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 4,
+        "cltd_k": -1.34444,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 5,
+        "cltd_k": -2.34444,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 6,
+        "cltd_k": -2.34444,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 7,
+        "cltd_k": -3.34444,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 8,
+        "cltd_k": -2.34444,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 9,
+        "cltd_k": 0.655556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 10,
+        "cltd_k": 5.655556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 11,
+        "cltd_k": 11.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 12,
+        "cltd_k": 16.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 13,
+        "cltd_k": 20.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 14,
+        "cltd_k": 22.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 15,
+        "cltd_k": 22.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 16,
+        "cltd_k": 20.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 17,
+        "cltd_k": 19.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 18,
+        "cltd_k": 17.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 19,
+        "cltd_k": 15.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 20,
+        "cltd_k": 13.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 21,
+        "cltd_k": 10.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 22,
+        "cltd_k": 8.655556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 23,
+        "cltd_k": 6.655556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SE",
+        "hour": 24,
+        "cltd_k": 4.655556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 1,
+        "cltd_k": 3.211111,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 2,
+        "cltd_k": 1.211111,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 3,
+        "cltd_k": 0.211111,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 4,
+        "cltd_k": -0.78889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 5,
+        "cltd_k": -1.78889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 6,
+        "cltd_k": -1.78889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 7,
+        "cltd_k": -2.78889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 8,
+        "cltd_k": -1.78889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 9,
+        "cltd_k": -2.78889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 10,
+        "cltd_k": -1.78889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 11,
+        "cltd_k": 0.211111,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 12,
+        "cltd_k": 4.211111,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 13,
+        "cltd_k": 8.211111,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 14,
+        "cltd_k": 13.21111,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 15,
+        "cltd_k": 16.21111,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 16,
+        "cltd_k": 20.21111,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 17,
+        "cltd_k": 21.21111,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 18,
+        "cltd_k": 20.21111,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 19,
+        "cltd_k": 19.21111,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 20,
+        "cltd_k": 16.21111,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 21,
+        "cltd_k": 14.21111,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 22,
+        "cltd_k": 10.21111,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 23,
+        "cltd_k": 8.211111,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "S",
+        "hour": 24,
+        "cltd_k": 5.211111,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 1,
+        "cltd_k": 6.655556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 2,
+        "cltd_k": 3.655556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 3,
+        "cltd_k": 1.655556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 4,
+        "cltd_k": -0.34444,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 5,
+        "cltd_k": -1.34444,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 6,
+        "cltd_k": -2.34444,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 7,
+        "cltd_k": -3.34444,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 8,
+        "cltd_k": -3.34444,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 9,
+        "cltd_k": -3.34444,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 10,
+        "cltd_k": -2.34444,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 11,
+        "cltd_k": -0.34444,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 12,
+        "cltd_k": 0.655556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 13,
+        "cltd_k": 3.655556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 14,
+        "cltd_k": 6.655556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 15,
+        "cltd_k": 11.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 16,
+        "cltd_k": 16.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 17,
+        "cltd_k": 22.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 18,
+        "cltd_k": 25.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 19,
+        "cltd_k": 28.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 20,
+        "cltd_k": 28.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 21,
+        "cltd_k": 24.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 22,
+        "cltd_k": 19.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 23,
+        "cltd_k": 14.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "SW",
+        "hour": 24,
+        "cltd_k": 10.65556,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 1,
+        "cltd_k": 11.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 2,
+        "cltd_k": 7.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 3,
+        "cltd_k": 5.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 4,
+        "cltd_k": 3.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 5,
+        "cltd_k": 1.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 6,
+        "cltd_k": 0.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 7,
+        "cltd_k": 0.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 8,
+        "cltd_k": -0.01111,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 9,
+        "cltd_k": 0.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 10,
+        "cltd_k": 0.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 11,
+        "cltd_k": 2.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 12,
+        "cltd_k": 3.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 13,
+        "cltd_k": 5.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 14,
+        "cltd_k": 7.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 15,
+        "cltd_k": 11.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 16,
+        "cltd_k": 16.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 17,
+        "cltd_k": 21.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 18,
+        "cltd_k": 27.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 19,
+        "cltd_k": 2.988889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": "Preserved exactly from supplied table; verify source anomaly."
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 20,
+        "cltd_k": 35.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 21,
+        "cltd_k": 32.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 22,
+        "cltd_k": 27.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 23,
+        "cltd_k": 21.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "W",
+        "hour": 24,
+        "cltd_k": 16.98889,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 1,
+        "cltd_k": 13.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 2,
+        "cltd_k": 10.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 3,
+        "cltd_k": 8.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 4,
+        "cltd_k": 6.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 5,
+        "cltd_k": 5.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 6,
+        "cltd_k": 4.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 7,
+        "cltd_k": 3.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 8,
+        "cltd_k": 3.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 9,
+        "cltd_k": 3.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 10,
+        "cltd_k": 4.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 11,
+        "cltd_k": 5.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 12,
+        "cltd_k": 7.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 13,
+        "cltd_k": 9.322222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 14,
+        "cltd_k": 11.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 15,
+        "cltd_k": 14.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 16,
+        "cltd_k": 16.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 17,
+        "cltd_k": 20.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 18,
+        "cltd_k": 24.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 19,
+        "cltd_k": 28.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 20,
+        "cltd_k": 30.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 21,
+        "cltd_k": 30.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 22,
+        "cltd_k": 26.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 23,
+        "cltd_k": 21.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      },
+      {
+        "profile_code": "SL-8N-DEFAULT",
+        "orientation": "NW",
+        "hour": 24,
+        "cltd_k": 17.32222,
+        "source": "Sri Lanka adjusted note p.2",
+        "note": ""
+      }
+    ],
+    "Glass_CLTD": [
+      {
+        "hour": 1,
+        "cltd_k": 3.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 2,
+        "cltd_k": 2.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 3,
+        "cltd_k": 1.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 4,
+        "cltd_k": 1.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 5,
+        "cltd_k": 1.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 6,
+        "cltd_k": 1.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 7,
+        "cltd_k": 1.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 8,
+        "cltd_k": 2.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 9,
+        "cltd_k": 3.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 10,
+        "cltd_k": 4.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 11,
+        "cltd_k": 6.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 12,
+        "cltd_k": 7.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 13,
+        "cltd_k": 9.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 14,
+        "cltd_k": 9.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 15,
+        "cltd_k": 10.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 16,
+        "cltd_k": 10.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 17,
+        "cltd_k": 9.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 18,
+        "cltd_k": 9.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 19,
+        "cltd_k": 8.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 20,
+        "cltd_k": 6.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 21,
+        "cltd_k": 5.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 22,
+        "cltd_k": 4.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 23,
+        "cltd_k": 4.1,
+        "source": "Sri Lanka adjusted note p.4"
+      },
+      {
+        "hour": 24,
+        "cltd_k": 3.1,
+        "source": "Sri Lanka adjusted note p.4"
+      }
+    ],
+    "SCL": [
+      {
+        "orientation": "N",
+        "hour": 1,
+        "scl_w_m2": 20.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 2,
+        "scl_w_m2": 20.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 3,
+        "scl_w_m2": 16.9,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 4,
+        "scl_w_m2": 16.9,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 5,
+        "scl_w_m2": 16.9,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 6,
+        "scl_w_m2": 98.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 7,
+        "scl_w_m2": 93.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 8,
+        "scl_w_m2": 98.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 9,
+        "scl_w_m2": 110.5,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 10,
+        "scl_w_m2": 123.5,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 11,
+        "scl_w_m2": 135.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 12,
+        "scl_w_m2": 139.1,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 13,
+        "scl_w_m2": 143,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 14,
+        "scl_w_m2": 139.1,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 15,
+        "scl_w_m2": 131.3,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 16,
+        "scl_w_m2": 118.3,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 17,
+        "scl_w_m2": 118.3,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 18,
+        "scl_w_m2": 139.1,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 19,
+        "scl_w_m2": 57.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 20,
+        "scl_w_m2": 41.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 21,
+        "scl_w_m2": 32.5,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 22,
+        "scl_w_m2": 28.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 23,
+        "scl_w_m2": 24.7,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "N",
+        "hour": 24,
+        "scl_w_m2": 24.7,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 1,
+        "scl_w_m2": 26.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 2,
+        "scl_w_m2": 22.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 3,
+        "scl_w_m2": 22.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 4,
+        "scl_w_m2": 19.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 5,
+        "scl_w_m2": 22.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 6,
+        "scl_w_m2": 283.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 7,
+        "scl_w_m2": 400.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 8,
+        "scl_w_m2": 404.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 9,
+        "scl_w_m2": 332.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 10,
+        "scl_w_m2": 230.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 11,
+        "scl_w_m2": 184.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 12,
+        "scl_w_m2": 177.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 13,
+        "scl_w_m2": 170.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 14,
+        "scl_w_m2": 162,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 15,
+        "scl_w_m2": 151.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 16,
+        "scl_w_m2": 135.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 17,
+        "scl_w_m2": 117.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 18,
+        "scl_w_m2": 94.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 19,
+        "scl_w_m2": 60,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 20,
+        "scl_w_m2": 49.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 21,
+        "scl_w_m2": 42,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 22,
+        "scl_w_m2": 38.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 23,
+        "scl_w_m2": 33.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NE",
+        "hour": 24,
+        "scl_w_m2": 30,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 1,
+        "scl_w_m2": 28,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 2,
+        "scl_w_m2": 25,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 3,
+        "scl_w_m2": 25,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 4,
+        "scl_w_m2": 22,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 5,
+        "scl_w_m2": 25,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 6,
+        "scl_w_m2": 261,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 7,
+        "scl_w_m2": 410,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 8,
+        "scl_w_m2": 466,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 9,
+        "scl_w_m2": 457,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 10,
+        "scl_w_m2": 391,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 11,
+        "scl_w_m2": 280,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 12,
+        "scl_w_m2": 195,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 13,
+        "scl_w_m2": 176,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 14,
+        "scl_w_m2": 164,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 15,
+        "scl_w_m2": 148,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 16,
+        "scl_w_m2": 135,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 17,
+        "scl_w_m2": 117,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 18,
+        "scl_w_m2": 95,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 19,
+        "scl_w_m2": 63,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 20,
+        "scl_w_m2": 54,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 21,
+        "scl_w_m2": 47,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 22,
+        "scl_w_m2": 41,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 23,
+        "scl_w_m2": 38,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "E",
+        "hour": 24,
+        "scl_w_m2": 35,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 1,
+        "scl_w_m2": 18.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 2,
+        "scl_w_m2": 16.25,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 3,
+        "scl_w_m2": 14.3,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 4,
+        "scl_w_m2": 12.35,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 5,
+        "scl_w_m2": 12.35,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 6,
+        "scl_w_m2": 92.3,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 7,
+        "scl_w_m2": 167.7,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 8,
+        "scl_w_m2": 219.05,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 9,
+        "scl_w_m2": 247.65,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 10,
+        "scl_w_m2": 247.65,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 11,
+        "scl_w_m2": 219.05,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 12,
+        "scl_w_m2": 167.7,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 13,
+        "scl_w_m2": 120.9,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 14,
+        "scl_w_m2": 104.65,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 15,
+        "scl_w_m2": 96.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 16,
+        "scl_w_m2": 85.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 17,
+        "scl_w_m2": 73.45,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 18,
+        "scl_w_m2": 59.15,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 19,
+        "scl_w_m2": 39,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 20,
+        "scl_w_m2": 32.5,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 21,
+        "scl_w_m2": 28.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 22,
+        "scl_w_m2": 26.65,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 23,
+        "scl_w_m2": 22.75,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SE",
+        "hour": 24,
+        "scl_w_m2": 20.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 1,
+        "scl_w_m2": 8.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 2,
+        "scl_w_m2": 8.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 3,
+        "scl_w_m2": 7.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 4,
+        "scl_w_m2": 6.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 5,
+        "scl_w_m2": 6.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 6,
+        "scl_w_m2": 15.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 7,
+        "scl_w_m2": 22.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 8,
+        "scl_w_m2": 28.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 9,
+        "scl_w_m2": 45.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 10,
+        "scl_w_m2": 68,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 11,
+        "scl_w_m2": 88.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 12,
+        "scl_w_m2": 99.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 13,
+        "scl_w_m2": 99.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 14,
+        "scl_w_m2": 88.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 15,
+        "scl_w_m2": 68,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 16,
+        "scl_w_m2": 50.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 17,
+        "scl_w_m2": 41.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 18,
+        "scl_w_m2": 32.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 19,
+        "scl_w_m2": 20,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 20,
+        "scl_w_m2": 16.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 21,
+        "scl_w_m2": 15.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 22,
+        "scl_w_m2": 12.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 23,
+        "scl_w_m2": 11.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "S",
+        "hour": 24,
+        "scl_w_m2": 10,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 1,
+        "scl_w_m2": 17.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 2,
+        "scl_w_m2": 15.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 3,
+        "scl_w_m2": 14,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 4,
+        "scl_w_m2": 12.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 5,
+        "scl_w_m2": 11.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 6,
+        "scl_w_m2": 18.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 7,
+        "scl_w_m2": 26.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 8,
+        "scl_w_m2": 32.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 9,
+        "scl_w_m2": 36.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 10,
+        "scl_w_m2": 41.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 11,
+        "scl_w_m2": 45.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 12,
+        "scl_w_m2": 72,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 13,
+        "scl_w_m2": 108.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 14,
+        "scl_w_m2": 138.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 15,
+        "scl_w_m2": 156.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 16,
+        "scl_w_m2": 157.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 17,
+        "scl_w_m2": 140,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 18,
+        "scl_w_m2": 100.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 19,
+        "scl_w_m2": 46.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 20,
+        "scl_w_m2": 35.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 21,
+        "scl_w_m2": 28.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 22,
+        "scl_w_m2": 25.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 23,
+        "scl_w_m2": 21.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "SW",
+        "hour": 24,
+        "scl_w_m2": 18.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 1,
+        "scl_w_m2": 54,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 2,
+        "scl_w_m2": 47,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 3,
+        "scl_w_m2": 41,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 4,
+        "scl_w_m2": 38,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 5,
+        "scl_w_m2": 35,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 6,
+        "scl_w_m2": 54,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 7,
+        "scl_w_m2": 69,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 8,
+        "scl_w_m2": 85,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 9,
+        "scl_w_m2": 98,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 10,
+        "scl_w_m2": 107,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 11,
+        "scl_w_m2": 113,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 12,
+        "scl_w_m2": 117,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 13,
+        "scl_w_m2": 186,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 14,
+        "scl_w_m2": 309,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 15,
+        "scl_w_m2": 416,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 16,
+        "scl_w_m2": 482,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 17,
+        "scl_w_m2": 491,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 18,
+        "scl_w_m2": 403,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 19,
+        "scl_w_m2": 158,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 20,
+        "scl_w_m2": 110,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 21,
+        "scl_w_m2": 88,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 22,
+        "scl_w_m2": 76,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 23,
+        "scl_w_m2": 66,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "W",
+        "hour": 24,
+        "scl_w_m2": 60,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 1,
+        "scl_w_m2": 45.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 2,
+        "scl_w_m2": 42,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 3,
+        "scl_w_m2": 38.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 4,
+        "scl_w_m2": 33.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 5,
+        "scl_w_m2": 30,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 6,
+        "scl_w_m2": 52.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 7,
+        "scl_w_m2": 75.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 8,
+        "scl_w_m2": 94.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 9,
+        "scl_w_m2": 109.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 10,
+        "scl_w_m2": 121.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 11,
+        "scl_w_m2": 128.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 12,
+        "scl_w_m2": 135.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 13,
+        "scl_w_m2": 135.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 14,
+        "scl_w_m2": 166.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 15,
+        "scl_w_m2": 276,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 16,
+        "scl_w_m2": 385.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 17,
+        "scl_w_m2": 446.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 18,
+        "scl_w_m2": 404.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 19,
+        "scl_w_m2": 147.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 20,
+        "scl_w_m2": 98.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 21,
+        "scl_w_m2": 79.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 22,
+        "scl_w_m2": 64.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 23,
+        "scl_w_m2": 56.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "NW",
+        "hour": 24,
+        "scl_w_m2": 49.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 1,
+        "scl_w_m2": 83.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 2,
+        "scl_w_m2": 72.6,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 3,
+        "scl_w_m2": 66,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 4,
+        "scl_w_m2": 59.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 5,
+        "scl_w_m2": 55,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 6,
+        "scl_w_m2": 117.7,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 7,
+        "scl_w_m2": 235.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 8,
+        "scl_w_m2": 370.7,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 9,
+        "scl_w_m2": 499.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 10,
+        "scl_w_m2": 606.1,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 11,
+        "scl_w_m2": 689.7,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 12,
+        "scl_w_m2": 734.8,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 13,
+        "scl_w_m2": 744.7,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 14,
+        "scl_w_m2": 717.2,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 15,
+        "scl_w_m2": 654.5,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 16,
+        "scl_w_m2": 554.4,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 17,
+        "scl_w_m2": 425.7,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 18,
+        "scl_w_m2": 287.1,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 19,
+        "scl_w_m2": 183.7,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 20,
+        "scl_w_m2": 152.9,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 21,
+        "scl_w_m2": 132,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 22,
+        "scl_w_m2": 117.7,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 23,
+        "scl_w_m2": 104.5,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      },
+      {
+        "orientation": "HORIZ",
+        "hour": 24,
+        "scl_w_m2": 93.5,
+        "source": "Sri Lanka adjusted note pp.3-4"
+      }
+    ],
+    "CLF_Occupancy": [
+      {
+        "building_type": "office",
+        "hour": 1,
+        "clf": 0.08,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 2,
+        "clf": 0.06,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 3,
+        "clf": 0.05,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 4,
+        "clf": 0.04,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 5,
+        "clf": 0.04,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 6,
+        "clf": 0.03,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 7,
+        "clf": 0.02,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 8,
+        "clf": 0.02,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 9,
+        "clf": 0.02,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 10,
+        "clf": 0.61,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 11,
+        "clf": 0.69,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 12,
+        "clf": 0.75,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 13,
+        "clf": 0.79,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 14,
+        "clf": 0.83,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 15,
+        "clf": 0.86,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 16,
+        "clf": 0.89,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 17,
+        "clf": 0.91,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 18,
+        "clf": 0.32,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 19,
+        "clf": 0.26,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 20,
+        "clf": 0.21,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 21,
+        "clf": 0.17,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 22,
+        "clf": 0.14,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 23,
+        "clf": 0.11,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "office",
+        "hour": 24,
+        "clf": 0.09,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 1,
+        "clf": 0.85,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 2,
+        "clf": 0.88,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 3,
+        "clf": 0.9,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 4,
+        "clf": 0.92,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 5,
+        "clf": 0.93,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 6,
+        "clf": 0.94,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 7,
+        "clf": 0.95,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 8,
+        "clf": 0.96,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 9,
+        "clf": 0.97,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 10,
+        "clf": 0.97,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 11,
+        "clf": 0.38,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 12,
+        "clf": 0.3,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 13,
+        "clf": 0.25,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 14,
+        "clf": 0.2,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 15,
+        "clf": 0.17,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 16,
+        "clf": 0.14,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 17,
+        "clf": 0.11,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 18,
+        "clf": 0.09,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 19,
+        "clf": 0.08,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 20,
+        "clf": 0.06,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 21,
+        "clf": 0.65,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 22,
+        "clf": 0.72,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 23,
+        "clf": 0.77,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 24,
+        "clf": 0.82,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 1,
+        "clf": 0.38,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 2,
+        "clf": 0.3,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 3,
+        "clf": 0.25,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 4,
+        "clf": 0.2,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 5,
+        "clf": 0.17,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 6,
+        "clf": 0.14,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 7,
+        "clf": 0.11,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 8,
+        "clf": 0.09,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 9,
+        "clf": 0.08,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 10,
+        "clf": 0.06,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 11,
+        "clf": 0.65,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 12,
+        "clf": 0.72,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 13,
+        "clf": 0.77,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 14,
+        "clf": 0.82,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 15,
+        "clf": 0.85,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 16,
+        "clf": 0.88,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 17,
+        "clf": 0.9,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 18,
+        "clf": 0.92,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 19,
+        "clf": 0.93,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 20,
+        "clf": 0.94,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 21,
+        "clf": 0.95,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 22,
+        "clf": 0.96,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 23,
+        "clf": 0.97,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 24,
+        "clf": 0.97,
+        "source": "Sri Lanka adjusted note pp.4-5"
+      }
+    ],
+    "CLF_Lighting": [
+      {
+        "building_type": "office",
+        "hour": 1,
+        "clf": 0.06,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 2,
+        "clf": 0.05,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 3,
+        "clf": 0.05,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 4,
+        "clf": 0.05,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 5,
+        "clf": 0.04,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 6,
+        "clf": 0.04,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 7,
+        "clf": 0.03,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 8,
+        "clf": 0.03,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 9,
+        "clf": 0.03,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 10,
+        "clf": 0.72,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 11,
+        "clf": 0.8,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 12,
+        "clf": 0.84,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 13,
+        "clf": 0.87,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 14,
+        "clf": 0.88,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 15,
+        "clf": 0.89,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 16,
+        "clf": 0.9,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 17,
+        "clf": 0.91,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 18,
+        "clf": 0.23,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 19,
+        "clf": 0.15,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 20,
+        "clf": 0.11,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 21,
+        "clf": 0.09,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 22,
+        "clf": 0.08,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 23,
+        "clf": 0.07,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "office",
+        "hour": 24,
+        "clf": 0.07,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 1,
+        "clf": 0.91,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 2,
+        "clf": 0.92,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 3,
+        "clf": 0.92,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 4,
+        "clf": 0.93,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 5,
+        "clf": 0.94,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 6,
+        "clf": 0.94,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 7,
+        "clf": 0.95,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 8,
+        "clf": 0.95,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 9,
+        "clf": 0.96,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 10,
+        "clf": 0.96,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 11,
+        "clf": 0.27,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 12,
+        "clf": 0.19,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 13,
+        "clf": 0.15,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 14,
+        "clf": 0.13,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 15,
+        "clf": 0.11,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 16,
+        "clf": 0.1,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 17,
+        "clf": 0.09,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 18,
+        "clf": 0.08,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 19,
+        "clf": 0.08,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 20,
+        "clf": 0.07,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 21,
+        "clf": 0.75,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 22,
+        "clf": 0.84,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 23,
+        "clf": 0.87,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "hotel",
+        "hour": 24,
+        "clf": 0.89,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 1,
+        "clf": 0.27,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 2,
+        "clf": 0.19,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 3,
+        "clf": 0.15,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 4,
+        "clf": 0.13,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 5,
+        "clf": 0.11,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 6,
+        "clf": 0.1,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 7,
+        "clf": 0.09,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 8,
+        "clf": 0.08,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 9,
+        "clf": 0.08,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 10,
+        "clf": 0.07,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 11,
+        "clf": 0.75,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 12,
+        "clf": 0.84,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 13,
+        "clf": 0.87,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 14,
+        "clf": 0.89,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 15,
+        "clf": 0.91,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 16,
+        "clf": 0.92,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 17,
+        "clf": 0.92,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 18,
+        "clf": 0.93,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 19,
+        "clf": 0.94,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 20,
+        "clf": 0.94,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 21,
+        "clf": 0.95,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 22,
+        "clf": 0.95,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 23,
+        "clf": 0.96,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      },
+      {
+        "building_type": "restaurant",
+        "hour": 24,
+        "clf": 0.96,
+        "source": "Sri Lanka adjusted note pp.5-6"
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+﻿key,value
+database_version,2026-09-16-drive-v1
+method,CLTD / SCL / CLF
+location_basis,"Colombo, Sri Lanka / Latitude 8N adjusted notes"
+baseline_outdoor_db_c,33
+baseline_daily_range_c,8
+baseline_indoor_db_c,24
+baseline_mean_outdoor_c,29
+baseline_cltd_correction_k,1.1
+website_note,CLTD = stored CLTD + (new design correction - 1.1 K baseline correction).
